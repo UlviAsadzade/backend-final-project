@@ -12,5 +12,7 @@ namespace QuarterTemplate.Models
         {
 
         }
+        public DbSet<Slider> Sliders { get; set; }
+
     }
 }
