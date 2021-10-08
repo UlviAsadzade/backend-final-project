@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using QuarterTemplate.Models;
+using QuarterTemplate.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -20,7 +21,13 @@ namespace QuarterTemplate.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            HomeViewModel homeVM = new HomeViewModel
+            {
+                Sliders = _context.Sliders.OrderBy(x => x.Order).ToList(),
+                Abouts=_context.Abouts.ToList(),
+                Services=_context.Services.OrderBy(x=>x.Order).Take(3).ToList()
+            };
+            return View(homeVM);
         }
 
       

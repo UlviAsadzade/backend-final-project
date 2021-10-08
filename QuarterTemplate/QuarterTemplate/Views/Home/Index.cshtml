@@ -1,74 +1,82 @@
-﻿@{
+﻿@model HomeViewModel
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <!-- SLIDER AREA START (slider-3) -->
 <div class="ltn__slider-area ltn__slider-3  section-bg-1">
     <div class="ltn__slide-one-active slick-slide-arrow-1 slick-slide-dots-1">
-        <!-- ltn__slide-item -->
-        <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3">
-            <div class="ltn__slide-item-inner">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 align-self-center">
-                            <div class="slide-item-info">
-                                <div class="slide-item-info-inner ltn__slide-animation">
-                                    <div class="slide-video mb-50 d-none">
-                                        <a class="ltn__video-icon-2 ltn__video-icon-2-border" href="https://www.youtube.com/embed/tlThdr3O5Qo" data-rel="lightcase:myCollection">
-                                            <i class="fa fa-play"></i>
-                                        </a>
+        @foreach (var item in Model.Sliders)
+        {
+            if (item.Order % 2 == 1)
+            {
+                <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3">
+                    <div class="ltn__slide-item-inner">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 align-self-center">
+                                    <div class="slide-item-info">
+                                        <div class="slide-item-info-inner ltn__slide-animation">
+                                            <div class="slide-video mb-50 d-none">
+                                                <a class="ltn__video-icon-2 ltn__video-icon-2-border" href="https://www.youtube.com/embed/tlThdr3O5Qo" data-rel="lightcase:myCollection">
+                                                    <i class="fa fa-play"></i>
+                                                </a>
+                                            </div>
+                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="@item.Icon"></i></span> @item.Subtitle</h6>
+                                            <h1 class="slide-title animated ">@item.Title1 <br> @item.Title2</h1>
+                                            <div class="slide-brief animated">
+                                                <p>@item.Desc</p>
+                                            </div>
+                                            <div class="btn-wrapper animated">
+                                                <a href="about.html" class="theme-btn-1 btn btn-effect-1">@item.UrlText</a>
+
+                                            </div>
+                                        </div>
                                     </div>
-                                    <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span> Real Estate Agency</h6>
-                                    <h1 class="slide-title animated ">Find Your Dream <br> House By Us</h1>
-                                    <div class="slide-brief animated">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    </div>
-                                    <div class="btn-wrapper animated">
-                                        <a href="about.html" class="theme-btn-1 btn btn-effect-1">Make An Enquiry</a>
-                                        <a class="ltn__video-play-btn bg-white" href="https://www.youtube.com/embed/HnbMYzdjuBs?autoplay=1&amp;showinfo=0" data-rel="lightcase">
-                                            <i class="icon-play  ltn__secondary-color"></i>
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="slide-item-img">
-                                <img src="~/assets/img/slider/21.png" alt="#">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- ltn__slide-item -->
-        <div class="ltn__slide-item ltn__slide-item-2  ltn__slide-item-3-normal ltn__slide-item-3">
-            <div class="ltn__slide-item-inner  text-right text-end">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-lg-12 align-self-center">
-                            <div class="slide-item-info">
-                                <div class="slide-item-info-inner ltn__slide-animation">
-                                    <h6 class="slide-sub-title white-color--- animated"><span><i class="fas fa-home"></i></span> Real Estate Agency</h6>
-                                    <h1 class="slide-title animated ">The Right Place <br>of House Finding</h1>
-                                    <div class="slide-brief animated">
-                                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore.</p>
-                                    </div>
-                                    <div class="btn-wrapper animated">
-                                        <a href="service.html" class="theme-btn-1 btn btn-effect-1">OUR SERVICES</a>
-                                        <a href="about.html" class="btn btn-transparent btn-effect-3">LEARN MORE</a>
+                                    <div class="slide-item-img">
+                                        <img src="~/assets/img/slider/@item.Image" alt="#">
                                     </div>
                                 </div>
                             </div>
-                            <div class="slide-item-img slide-img-left">
-                                <img src="~/assets/img/slider/21.png" alt="#">
+                        </div>
+                    </div>
+                    </div>
+
+                    }
+                    else
+                    {
+                    <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3">
+                        <div class="ltn__slide-item-inner  text-right text-end">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-12 align-self-center">
+                                        <div class="slide-item-info">
+                                            <div class="slide-item-info-inner ltn__slide-animation">
+                                                <h6 class="slide-sub-title white-color--- animated"><span><i class="@item.Icon"></i></span> @item.Subtitle</h6>
+                                                <h1 class="slide-title animated ">@item.Title1 <br>@item.Title2</h1>
+                                                <div class="slide-brief animated">
+                                                    <p>@item.Desc</p>
+                                                </div>
+                                                <div class="btn-wrapper animated">
+                                                    <a href="service.html" class="theme-btn-1 btn btn-effect-1">@item.UrlText</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="slide-item-img slide-img-left">
+                                            <img src="~/assets/img/slider/@item.Image" alt="#">
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
+
+
+                    }
+                    }
+                    <!-- ltn__slide-item -->
                 </div>
             </div>
-        </div>
-        <!--  -->
-    </div>
-</div>
 <!-- SLIDER AREA END -->
 <!-- CAR DEALER FORM AREA START -->
 <div class="ltn__car-dealer-form-area mt--65 mt-120 pb-115---">
@@ -202,22 +210,14 @@
                         </p>
                     </div>
                     <ul class="ltn__list-item-half clearfix">
-                        <li>
-                            <i class="flaticon-home-2"></i>
-                            Smart Home Design
-                        </li>
-                        <li>
-                            <i class="flaticon-mountain"></i>
-                            Beautiful Scene Around
-                        </li>
-                        <li>
-                            <i class="flaticon-heart"></i>
-                            Exceptional Lifestyle
-                        </li>
-                        <li>
-                            <i class="flaticon-secure"></i>
-                            Complete 24/7 Security
-                        </li>
+                        @foreach (var item in Model.Abouts)
+                        {
+                            <li>
+                                <i class="@item.Icon"></i>
+                                @item.Text
+                            </li>
+                        }
+
                     </ul>
                     <div class="ltn__callout bg-overlay-theme-05  mt-30">
                         <p>
@@ -356,45 +356,23 @@
             </div>
         </div>
         <div class="row ltn__custom-gutter--- justify-content-center">
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-house"></i></span> -->
-                        <img src="~/assets/img/icons/icon-img/21.png" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Buy a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1 active">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-house-3"></i></span> -->
-                        <img src="~/assets/img/icons/icon-img/22.png" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Rent a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a>
+            @foreach (var item in Model.Services)
+            {
+                <div class="col-lg-4 col-sm-6 col-12">
+                    <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
+                        <div class="ltn__feature-icon">
+                            <!-- <span><i class="flaticon-house"></i></span> -->
+                            <img src="~/assets/img/icons/icon-img/@item.Icon" alt="#">
+                        </div>
+                        <div class="ltn__feature-info">
+                            <h3><a href="service-details.html">@item.Title</a></h3>
+                            <p>@item.Desc</p>
+                            <a class="ltn__service-btn" href="service-details.html">@item.UrlText<i class="flaticon-right-arrow"></i></a>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <div class="col-lg-4 col-sm-6 col-12">
-                <div class="ltn__feature-item ltn__feature-item-6 text-center bg-white  box-shadow-1">
-                    <div class="ltn__feature-icon">
-                        <!-- <span><i class="flaticon-deal-1"></i></span> -->
-                        <img src="~/assets/img/icons/icon-img/23.png" alt="#">
-                    </div>
-                    <div class="ltn__feature-info">
-                        <h3><a href="service-details.html">Sell a home</a></h3>
-                        <p>over 1 million+ homes for sale available on the website, we can match you with a house you will want to call home.</p>
-                        <a class="ltn__service-btn" href="service-details.html">Find A Home <i class="flaticon-right-arrow"></i></a>
-                    </div>
-                </div>
-            </div>
+
+            }
         </div>
     </div>
 </div>

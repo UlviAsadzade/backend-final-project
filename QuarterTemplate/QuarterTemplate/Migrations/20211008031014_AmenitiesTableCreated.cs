@@ -2,28 +2,29 @@
 
 namespace QuarterTemplate.Migrations
 {
-    public partial class AboutsTableCreated : Migration
+    public partial class AmenitiesTableCreated : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Abouts",
+                name: "Amenities",
                 columns: table => new
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    Name = table.Column<string>(maxLength: 100, nullable: true),
                     Icon = table.Column<string>(maxLength: 100, nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Abouts", x => x.Id);
+                    table.PrimaryKey("PK_Amenities", x => x.Id);
                 });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "Abouts");
+                name: "Amenities");
         }
     }
 }

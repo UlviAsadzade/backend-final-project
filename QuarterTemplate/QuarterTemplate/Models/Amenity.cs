@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 
 namespace QuarterTemplate.Models
 {
-    public class About
+    public class Amenity
     {
         public int Id { get; set; }
 
         [StringLength(maximumLength: 100)]
-        public string Icon { get; set; }
+        public string Name { get; set; }
 
         [StringLength(maximumLength: 100)]
-        public string Text { get; set; }
+        public string Icon { get; set; }
     }
 }
