@@ -20,6 +20,7 @@ namespace QuarterTemplate.Models
         public DbSet<Team> Teams { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<Status> Statuses { get; set; }
+        public DbSet<City> Cities { get; set; }
 
     }
 }
