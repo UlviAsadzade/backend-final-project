@@ -6,6 +6,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using QuarterTemplate.Models;
+using QuarterTemplate.Services;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -31,6 +32,9 @@ namespace QuarterTemplate
             {
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
+
+            services.AddScoped<LayoutService>();
+            services.AddHttpContextAccessor();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

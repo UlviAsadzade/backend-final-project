@@ -12,6 +12,7 @@ namespace QuarterTemplate.ViewModels
         public List<About> Abouts { get; set; }
         public List<Service> Services { get; set; }
         public List<Amenity> Amenities { get; set; }
+        public Setting Settings { get; set; }
 
     }
 }
