@@ -150,3 +150,4 @@ C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\Quarte
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\QuarterTemplate.csproj.AssemblyReference.cache
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Views\Team\Index.cshtml.g.cs
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Views\Service\Index.cshtml.g.cs
+C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Views\Contact\Index.cshtml.g.cs
