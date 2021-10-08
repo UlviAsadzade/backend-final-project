@@ -13,6 +13,7 @@ namespace QuarterTemplate.Models
 
         }
         public DbSet<Slider> Sliders { get; set; }
+        public DbSet<About> Abouts { get; set; }
 
     }
 }
