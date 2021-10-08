@@ -18,6 +18,7 @@ namespace QuarterTemplate.Models
         public DbSet<Amenity> Amenities { get; set; }
         public DbSet<Setting> Settings { get; set; }
         public DbSet<Team> Teams { get; set; }
+        public DbSet<Category> Categories { get; set; }
 
     }
 }
