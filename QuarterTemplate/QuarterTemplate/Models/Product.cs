@@ -59,7 +59,7 @@ namespace QuarterTemplate.Models
         public City City { get; set; }
         public Status Status { get; set; }
         public List<ProductImage> ProductImages { get; set; }
-        public List<Amenity> Amenities { get; set; }
+        public List<ProductAmenity> ProductAmenities { get; set; }
 
 
 

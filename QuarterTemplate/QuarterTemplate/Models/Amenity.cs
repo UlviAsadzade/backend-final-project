@@ -16,6 +16,6 @@ namespace QuarterTemplate.Models
         [StringLength(maximumLength: 100)]
         public string Icon { get; set; }
 
-        public List<Amenity> Amenities { get; set; }
+        public List<ProductAmenity> ProductAmenities { get; set; }
     }
 }
