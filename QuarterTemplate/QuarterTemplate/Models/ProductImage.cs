@@ -6,16 +6,17 @@ using System.Threading.Tasks;
 
 namespace QuarterTemplate.Models
 {
-    public class Amenity
+    public class ProductImage
     {
         public int Id { get; set; }
 
-        [StringLength(maximumLength: 100)]
-        public string Name { get; set; }
+        public int ProductId { get; set; }
 
         [StringLength(maximumLength: 100)]
-        public string Icon { get; set; }
+        public string Image { get; set; }
 
-        public List<Amenity> Amenities { get; set; }
+        public bool IsPoster { get; set; }
+
+        public Product Product { get; set; }
     }
 }

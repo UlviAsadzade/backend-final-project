@@ -27,7 +27,10 @@ namespace QuarterTemplate.Controllers
                 Abouts = _context.Abouts.ToList(),
                 Services = _context.Services.OrderBy(x => x.Order).Take(3).ToList(),
                 Amenities = _context.Amenities.ToList(),
-                Settings=_context.Settings.FirstOrDefault()
+                Settings=_context.Settings.FirstOrDefault(),
+                Cities=_context.Cities.ToList(),
+                Categories=_context.Categories.ToList(),
+                Statuses=_context.Statuses.ToList()
             };
             return View(homeVM);
         }
