@@ -34,5 +34,14 @@ namespace QuarterTemplate.Controllers
 
             return View(productVM);
         }
+
+        public IActionResult Detail(int id)
+        {
+            Product product = _context.Products.Include(x=>x.ProductImages).Include(x => x.Team).Include(x=>x.City)
+                .Include(x => x.Category).Include(x => x.ProductAmenities).ThenInclude(x=>x.Amenity)
+                .Include(x=>x.Status).FirstOrDefault(x => x.Id == id);
+
+            return View(product);
+        }
     }
 }
