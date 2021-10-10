@@ -12,5 +12,7 @@ namespace QuarterTemplate.Models
 
         [StringLength(maximumLength: 100)]
         public string Name { get; set; }
+        public List<Product> Products { get; set; }
+
     }
 }

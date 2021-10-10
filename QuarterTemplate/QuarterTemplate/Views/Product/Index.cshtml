@@ -1,0 +1,280 @@
+﻿@model ProductViewModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+
+        <!-- BREADCRUMB AREA START -->
+        <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="~/assets/img/bg/14.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ltn__breadcrumb-inner">
+                            <h1 class="page-title">Shop Left Sidebar</h1>
+                            <div class="ltn__breadcrumb-list">
+                                <ul>
+                                    <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                                    <li>Shop Left Sidebar</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BREADCRUMB AREA END -->
+        <!-- PRODUCT DETAILS AREA START -->
+        <div class="ltn__product-area ltn__product-gutter">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-8 order-lg-2 mb-100">
+                        <div class="ltn__shop-options">
+                            <ul class="justify-content-start">
+                                <li>
+                                    <div class="ltn__grid-list-tab-menu ">
+                                        <div class="nav">
+                                            <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i class="fas fa-th-large"></i></a>
+                                            <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="d-none">
+                                    <div class="showing-product-number text-right">
+                                        <span>Showing 1–12 of 18 results</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="short-by text-center">
+                                        <select class="nice-select">
+                                            <option>Default Sorting</option>
+                                            <option>Sort by popularity</option>
+                                            <option>Sort by new arrivals</option>
+                                            <option>Sort by price: low to high</option>
+                                            <option>Sort by price: high to low</option>
+                                        </select>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="short-by text-center">
+                                        <select class="nice-select">
+                                            <option>Per Page: 12</option>
+                                            <option>Per Page: 20</option>
+                                            <option>Per Page: 30</option>
+                                            <option>Per Page: 50</option>
+                                            <option>Per Page: 100</option>
+                                        </select>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="tab-content">
+                            <div class="tab-pane fade active show" id="liton_product_grid">
+                                <div class="ltn__product-tab-content-inner ltn__product-grid-view">
+                                    <div class="row">
+                                        <div class="col-lg-12">
+                                            <!-- Search Widget -->
+                                            <div class="ltn__search-widget mb-30">
+                                                <form action="#">
+                                                    <input type="text" name="search" placeholder="Search your keyword...">
+                                                    <button type="submit"><i class="fas fa-search"></i></button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                        <!-- ltn__product-item -->
+                                        @foreach (var item in Model.Products)
+                                        {
+                                            <div class="col-xl-6 col-sm-6 col-12">
+                                                <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
+                                                    <div class="product-img">
+                                                        <a href="product-details.html"><img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.IsPoster==true)?.Image" alt="#"></a>
+                                                        <div class="real-estate-agent">
+                                                            <div class="agent-img">
+                                                                <a href="team-details.html"><img src="~/assets/img/team/@item.Team.Image" alt="#"></a>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-info">
+                                                        <div class="product-badge">
+                                                            <ul>
+                                                                <li class="sale-badg">For @item.Status</li>
+                                                            </ul>
+                                                        </div>
+                                                        <h2 class="product-title"><a href="product-details.html">@item.Name</a></h2>
+                                                        <div class="product-img-location">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="locations.html"><i class="flaticon-pin"></i> Belmont Gardens, @item.City.Name</a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                        <ul class="ltn__list-item-2--- ltn__list-item-2-before--- ltn__plot-brief">
+                                                            <li>
+                                                                <span>@item.Bedrooms </span>
+                                                                Bed
+                                                            </li>
+                                                            <li>
+                                                                <span>@item.Bathrooms </span>
+                                                                Bath
+                                                            </li>
+                                                            <li>
+                                                                <span>@item.HomeArea </span>
+                                                                Square Ft
+                                                            </li>
+                                                        </ul>
+                                                        <div class="product-hover-action">
+                                                            <ul>
+                                                                <li>
+                                                                    <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
+                                                                        <i class="flaticon-expand"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="#" title="Wishlist" data-bs-toggle="modal" data-bs-target="#liton_wishlist_modal">
+                                                                        <i class="flaticon-heart-1"></i>
+                                                                    </a>
+                                                                </li>
+                                                                <li>
+                                                                    <a href="product-details.html" title="Product Details">
+                                                                        <i class="flaticon-add"></i>
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product-info-bottom">
+                                                        <div class="product-price">
+                                                            <span>$@item.SalePrice<label>/Month</label></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        }
+                                        <!--  -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="ltn__pagination-area text-center">
+                            <div class="ltn__pagination">
+                                <ul>
+                                    <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
+                                    <li><a href="#">1</a></li>
+                                    <li class="active"><a href="#">2</a></li>
+                                    <li><a href="#">3</a></li>
+                                    <li><a href="#">...</a></li>
+                                    <li><a href="#">10</a></li>
+                                    <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4  mb-100">
+                        <aside class="sidebar ltn__shop-sidebar">
+                            <h3 class="mb-10">Advance Information</h3>
+                            <label class="mb-30"><small>About 9,620 results (0.62 seconds) </small></label>
+                            <!-- Advance Information widget -->
+                            <div class="widget ltn__menu-widget">
+                                <h4 class="ltn__widget-title"> Categories</h4>
+                                <ul>
+                                    @foreach (var item in Model.Categories)
+                                    {
+                                        <li>
+                                            <label class="checkbox-item">
+                                                @item.Name
+                                                <input type="checkbox" checked="checked">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no">@item.Products.Count()</span>
+                                        </li>
+
+                                    }
+                                </ul>
+                                <hr>
+                                <h4 class="ltn__widget-title">Amenities</h4>
+                                <ul>
+                                    @foreach (var item in Model.Amenities)
+                                    {
+                                        <li>
+                                            <label class="checkbox-item">
+                                                @item.Name
+                                                <input type="checkbox" checked="checked">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no">@item.ProductAmenities.Count()</span>
+                                        </li>
+
+                                    }
+                                </ul>
+                                <hr>
+                                <h4 class="ltn__widget-title">Price Renge</h4>
+                                <ul>
+                                    <li>
+                                        <label class="checkbox-item">
+                                            Low Budget
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="categorey-no">$5,000 - $10,000</span>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-item">
+                                            Medium
+                                            <input type="checkbox" checked="checked">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="categorey-no">$10,000 - $30,000</span>
+                                    </li>
+                                    <li>
+                                        <label class="checkbox-item">
+                                            High Budget
+                                            <input type="checkbox">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                        <span class="categorey-no">$30,000 Up</span>
+                                    </li>
+                                </ul>
+                                <hr>
+                                <!-- Price Filter Widget -->
+                                <div class="widget--- ltn__price-filter-widget">
+                                    <h4 class="ltn__widget-title ltn__widget-title-border---">Filter by price</h4>
+                                    <div class="price_filter">
+                                        <div class="price_slider_amount">
+                                            <input type="submit" value="Your range:" />
+                                            <input type="text" class="amount" name="price" placeholder="Add Your Price" />
+                                        </div>
+                                        <div class="slider-range"></div>
+                                    </div>
+                                </div>
+                                <hr>
+                                
+                                <h4 class="ltn__widget-title">Status</h4>
+                                <ul>
+                                    @foreach (var item in Model.Statuses)
+                                    {
+                                        <li>
+                                            <label class="checkbox-item">
+                                                @item.Name
+                                                <input type="checkbox" checked="checked">
+                                                <span class="checkmark"></span>
+                                            </label>
+                                            <span class="categorey-no">@item.Products.Count()</span>
+                                        </li>
+
+                                    }
+                                </ul>
+                            </div>
+                           
+
+                        </aside>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- PRODUCT DETAILS AREA END -->
+      
+
+
+
