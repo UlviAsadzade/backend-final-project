@@ -1,0 +1,27 @@
+﻿@model About
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<div class="container-fluid">
+    <h1>Edit</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Icon">Icon</label>
+            <input asp-for="Icon" class="form-control" placeholder="icon">
+            <span class="text-danger" asp-validation-for="Icon"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Text">Text</label>
+            <input asp-for="Text" class="form-control" placeholder="Text">
+            <span class="text-danger" asp-validation-for="Text"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+
+    </form>
+</div>
+
