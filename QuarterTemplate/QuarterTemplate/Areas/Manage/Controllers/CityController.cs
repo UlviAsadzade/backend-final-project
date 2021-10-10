@@ -9,20 +9,20 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 {
     [Area("manage")]
 
-    public class CategoryController : Controller
+    public class CityController : Controller
     {
         private readonly AppDbContext _context;
 
-        public CategoryController(AppDbContext context)
+        public CityController(AppDbContext context)
         {
             _context = context;
         }
 
         public IActionResult Index()
         {
-            List<Category> categories = _context.Categories.ToList();
+            List<City> cities = _context.Cities.ToList();
 
-            return View(categories);
+            return View(cities);
         }
 
         public IActionResult Create()
@@ -31,7 +31,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(Category category)
+        public IActionResult Create(City city)
         {
 
             if (!ModelState.IsValid)
@@ -39,7 +39,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
                 return View();
             }
 
-            _context.Categories.Add(category);
+            _context.Cities.Add(city);
             _context.SaveChanges();
 
             return RedirectToAction("index");
@@ -47,21 +47,21 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
         public IActionResult Edit(int id)
         {
-            Category category = _context.Categories.FirstOrDefault(x => x.Id == id);
+            City city = _context.Cities.FirstOrDefault(x => x.Id == id);
 
-            if (category == null) return NotFound();
+            if (city == null) return NotFound();
 
-            return View(category);
+            return View(city);
         }
 
         [HttpPost]
-        public IActionResult Edit(Category category)
+        public IActionResult Edit(City city)
         {
-            Category existCategory = _context.Categories.FirstOrDefault(x => x.Id == category.Id);
+            City existCity = _context.Cities.FirstOrDefault(x => x.Id == city.Id);
 
-            if (existCategory == null) return NotFound();
+            if (existCity == null) return NotFound();
 
-            existCategory.Name = category.Name;
+            existCity.Name = city.Name;
 
             _context.SaveChanges();
 
@@ -70,13 +70,13 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
         public IActionResult DeleteFetch(int id)
         {
-            Category category = _context.Categories.FirstOrDefault(x => x.Id == id);
+            City city = _context.Cities.FirstOrDefault(x => x.Id == id);
 
-            if (category == null) return Json(new { status = 404 });
+            if (city == null) return Json(new { status = 404 });
 
             try
             {
-                _context.Categories.Remove(category);
+                _context.Cities.Remove(city);
                 _context.SaveChanges();
             }
             catch (Exception)

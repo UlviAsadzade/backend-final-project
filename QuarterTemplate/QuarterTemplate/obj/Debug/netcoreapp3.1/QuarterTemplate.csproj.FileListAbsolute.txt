@@ -158,3 +158,6 @@ C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\Quarte
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Index.cshtml.g.cs
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Create.cshtml.g.cs
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Category\Edit.cshtml.g.cs
+C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\City\Index.cshtml.g.cs
+C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\City\Create.cshtml.g.cs
+C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\City\Edit.cshtml.g.cs
