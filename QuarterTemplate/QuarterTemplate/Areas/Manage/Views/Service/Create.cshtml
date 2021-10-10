@@ -1,0 +1,54 @@
+﻿@model Service
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container-fluid">
+    <h1>Create</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Icon">Icon</label>
+            <input asp-for="Icon" class="form-control" placeholder="icon">
+            <span class="text-danger" asp-validation-for="Icon"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Order">Order</label>
+            <input asp-for="Order" class="form-control" placeholder="Order">
+            <span class="text-danger" asp-validation-for="Order"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Title">Title</label>
+            <input asp-for="Title" class="form-control" placeholder="Title">
+            <span class="text-danger" asp-validation-for="Title"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Desc">Desc</label>
+            <input asp-for="Desc" class="form-control" placeholder="Desc">
+            <span class="text-danger" asp-validation-for="Desc"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="RedirectUrl">RedirectUrl</label>
+            <input asp-for="RedirectUrl" class="form-control" placeholder="RedirectUrl">
+            <span class="text-danger" asp-validation-for="RedirectUrl"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="UrlText">UrlText</label>
+            <input asp-for="UrlText" class="form-control" placeholder="UrlText">
+            <span class="text-danger" asp-validation-for="UrlText"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+
+
+
+
