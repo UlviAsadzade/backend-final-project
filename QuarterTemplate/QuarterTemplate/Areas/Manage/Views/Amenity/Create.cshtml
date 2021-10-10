@@ -1,0 +1,32 @@
+﻿@model Amenity
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container-fluid">
+    <h1>Create</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label asp-for="Icon">Icon</label>
+            <input asp-for="Icon" class="form-control" placeholder="icon">
+            <span class="text-danger" asp-validation-for="Icon"></span>
+        </div>
+        <div class="form-group">
+            <label asp-for="Name">Name</label>
+            <input asp-for="Name" class="form-control" placeholder="Name">
+            <span class="text-danger" asp-validation-for="Name"></span>
+        </div>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+
+
