@@ -1,0 +1,58 @@
+﻿@model List<Slider>
+
+@{
+    ViewData["Title"] = "Index";
+    int order = 0;
+
+}
+
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Sliders</h1>
+        <a asp-action="create" class="btn btn-primary">Create</a>
+    </div>
+    <table class="table table-info">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Icon</th>
+                <th scope="col">Order</th>
+                <th scope="col">Title1</th>
+                <th scope="col">Title2</th>
+                <th scope="col">Subtitle</th>
+
+                <th scope="col">Image</th>
+                <th scope="col">Actions</th>
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var slider in Model)
+            {
+                order++;
+            <tr>
+                <th scope="row">@order</th>
+                <td>@slider.Icon</td>
+                <td>@slider.Order</td>
+                <td>@slider.Title1</td>
+                <td>@slider.Title2</td>
+                <td>@slider.Subtitle</td>
+
+                <td><img src="~/uploads/slider/@slider.Image" style="max-width:100px" alt="Alternate Text" /></td>
+
+                <td class="d-flex justify-content-between align-items-center">
+                    <a asp-action="edit" asp-route-id="@slider.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="deletefetch" asp-route-id="@slider.Id" class="btn btn-danger btn-item-delete">Delete</a>
+                </td>
+
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+
+
+

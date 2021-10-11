@@ -1,0 +1,75 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<div class="container-fluid">
+    <h1>Create</h1>
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Title1">Title1</label>
+                <input asp-for="Title1" class="form-control" placeholder="Title1">
+                <span class="text-danger" asp-validation-for="Title1"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="Title2">Title2</label>
+                <input asp-for="Title2" class="form-control" placeholder="Title2">
+                <span class="text-danger" asp-validation-for="Title2"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="Subtitle">Subtitle</label>
+                <input asp-for="Subtitle" class="form-control" placeholder="Subtitle">
+                <span class="text-danger" asp-validation-for="Subtitle"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="UrlText">UrlText</label>
+                <input asp-for="UrlText" class="form-control" placeholder="UrlText">
+                <span class="text-danger" asp-validation-for="UrlText"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-2">
+                <label asp-for="Order">Order</label>
+                <input asp-for="Order" class="form-control" placeholder="Order">
+                <span class="text-danger" asp-validation-for="Order"></span>
+            </div>
+            <div class="form-group col-md-10">
+                <label asp-for="RedirectUrl">RedirectUrl</label>
+                <input asp-for="RedirectUrl" class="form-control" placeholder="RedirectUrl">
+                <span class="text-danger" asp-validation-for="RedirectUrl"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="Icon">Icon</label>
+                <input asp-for="Icon" class="form-control" placeholder="Icon">
+                <span class="text-danger" asp-validation-for="Icon"></span>
+            </div>
+            <div class="form-group col-md-8">
+                <label asp-for="Desc">Desc</label>
+                <input asp-for="Desc" class="form-control" placeholder="Desc">
+                <span class="text-danger" asp-validation-for="Desc"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="ImageFile">ImageFile</label>
+                <input asp-for="ImageFile" class="form-control" placeholder="ImageFile">
+                <span class="text-danger" asp-validation-for="ImageFile"></span>
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+
+    </form>
+</div>
+
+
+
+
+

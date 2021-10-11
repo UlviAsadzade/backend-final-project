@@ -19,9 +19,7 @@
                 <th scope="col">Icon</th>
                 <th scope="col">Order</th>
                 <th scope="col">Title</th>
-                <th scope="col">Desc</th>
-                <th scope="col">Redirect Url</th>
-                <th scope="col">Url Text</th>
+                
                 <th scope="col">Actions</th>
 
 
@@ -36,9 +34,7 @@
                 <td>@item.Icon</td>
                 <td>@item.Order</td>
                 <td>@item.Title</td>
-                <td>@item.Desc</td>
-                <td>@item.RedirectUrl</td>
-                <td>@item.UrlText</td>
+                
                 <td>
                     <a asp-action="edit" asp-route-id="@item.Id" class="btn btn-warning">Edit</a>
                     <a asp-action="deletefetch" asp-route-id="@item.Id" class="btn btn-danger btn-item-delete">Delete</a>
