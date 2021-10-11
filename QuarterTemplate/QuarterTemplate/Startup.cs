@@ -35,6 +35,11 @@ namespace QuarterTemplate
                 options.UseSqlServer(Configuration.GetConnectionString("Default"));
             });
 
+            services.AddIdentity<AppUser, IdentityRole>(options =>
+            {
+                options.Password.RequireNonAlphanumeric = false;
+            }).AddDefaultTokenProviders().AddEntityFrameworkStores<AppDbContext>();
+
 
             services.AddScoped<LayoutService>();
             services.AddHttpContextAccessor();
@@ -61,6 +66,7 @@ namespace QuarterTemplate
             app.UseRouting();
             app.UseSession();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
