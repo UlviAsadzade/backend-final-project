@@ -88,10 +88,10 @@
                                             <div class="col-xl-6 col-sm-6 col-12">
                                                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
                                                     <div class="product-img">
-                                                        <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id"><img src="~/assets/img/product/@item.ProductImages.FirstOrDefault(x=>x.IsPoster==true)?.Image" alt="#"></a>
+                                                        <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id"><img src="~/uploads/product/@item.ProductImages.FirstOrDefault(x=>x.IsPoster==true)?.Image" alt="#"></a>
                                                         <div class="real-estate-agent">
                                                             <div class="agent-img">
-                                                                <a href="team-details.html"><img src="~/assets/img/team/@item.Team.Image" alt="#"></a>
+                                                                <a href="team-details.html"><img src="~/uploads/team/@item.Team.Image" alt="#"></a>
                                                             </div>
                                                         </div>
                                                     </div>

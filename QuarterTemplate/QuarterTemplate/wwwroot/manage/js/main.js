@@ -34,4 +34,8 @@
 
     })
 
+    $(document).on("click", ".remove-img-box", function () {
+        $(this).parent().remove()
+    })
+
 })

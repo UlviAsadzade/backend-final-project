@@ -1,6 +1,8 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Http;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -54,12 +56,26 @@ namespace QuarterTemplate.Models
 
         public int ParkingCount { get; set; }
 
+
         public Category Category { get; set; }
         public Team Team { get; set; }
         public City City { get; set; }
         public Status Status { get; set; }
         public List<ProductImage> ProductImages { get; set; }
-        public List<ProductAmenity> ProductAmenities { get; set; }
+        public List<ProductAmenity> ProductAmenities { get; set; } = new List<ProductAmenity>();
+
+
+        [NotMapped]
+        public IFormFile PosterFile { get; set; }
+
+        [NotMapped]
+        public List<IFormFile> ImageFiles { get; set; }
+
+        [NotMapped]
+        public List<int> ProductImageIds { get; set; } = new List<int>();
+
+        [NotMapped]
+        public List<int> AmenityIds { get; set; } = new List<int>();
 
 
 

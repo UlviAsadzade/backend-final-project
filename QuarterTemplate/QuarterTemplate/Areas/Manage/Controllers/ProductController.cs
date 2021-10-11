@@ -1,0 +1,309 @@
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using QuarterTemplate.Helpers;
+using QuarterTemplate.Models;
+using System;
+using System.Collections.Generic;
+using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
+
+namespace QuarterTemplate.Areas.Manage.Controllers
+{
+    [Area("manage")]
+
+    public class ProductController : Controller
+    {
+        private readonly AppDbContext _context;
+        private readonly IWebHostEnvironment _env;
+
+        public ProductController(AppDbContext context, IWebHostEnvironment env)
+        {
+            _context = context;
+            _env = env;
+        }
+
+        public IActionResult Index()
+        {
+            List<Product> products = _context.Products.Include(x => x.Team).Include(x => x.Category).Include(x => x.ProductImages).ToList();
+
+            return View(products);
+        }
+
+        public IActionResult Create()
+        {
+            ViewBag.Teams = _context.Teams.ToList();
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Cities = _context.Cities.ToList();
+            ViewBag.Amenities = _context.Amenities.ToList();
+            ViewBag.Statuses = _context.Statuses.ToList();
+
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Create(Product product)
+        {
+
+
+            if (!_context.Teams.Any(x => x.Id == product.TeamId)) ModelState.AddModelError("TeamId", "Team not found!");
+            if (!_context.Categories.Any(x => x.Id == product.CategoryId)) ModelState.AddModelError("CategoryId", "Category not found!");
+            if (!_context.Cities.Any(x => x.Id == product.CityId)) ModelState.AddModelError("CityId", "City not found!");
+            if (!_context.Statuses.Any(x => x.Id == product.StatusId)) ModelState.AddModelError("StatusId", "Status not found!");
+
+            foreach (var amenityId in product.AmenityIds)
+            {
+                Amenity amenity = _context.Amenities.FirstOrDefault(x => x.Id == amenityId);
+
+                if (amenity == null)
+                {
+                    ModelState.AddModelError("AmenityId", "Amenity not found!");
+                    return View();
+                }
+
+                ProductAmenity productAmenity = new ProductAmenity
+                {
+                    AmenityId = amenityId
+                };
+
+                product.ProductAmenities.Add(productAmenity);
+            }
+
+
+            if (!ModelState.IsValid) return View();
+
+            product.ProductImages = new List<ProductImage>();
+
+            if (product.PosterFile == null)
+            {
+                ModelState.AddModelError("PosterFile", "Poster file is required");
+            }
+            else
+            {
+                if (product.PosterFile.ContentType != "image/png" && product.PosterFile.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("PosterFile", "File type can be only jpeg,jpg or png!");
+                    return View();
+                }
+
+                if (product.PosterFile.Length > 2097152)
+                {
+                    ModelState.AddModelError("PosterFile", "File size can not be more than 2MB!");
+                    return View();
+                }
+
+                string newPosterName = FileManager.Save(_env.WebRootPath, "uploads/product", product.PosterFile);
+
+                ProductImage poster = new ProductImage
+                {
+                    Image = newPosterName,
+                    IsPoster = true,
+                };
+                product.ProductImages.Add(poster);
+            }
+
+
+
+            if (product.ImageFiles != null)
+            {
+                foreach (var file in product.ImageFiles)
+                {
+                    if (file.ContentType != "image/png" && file.ContentType != "image/jpeg")
+                    {
+                        continue;
+                    }
+
+                    if (file.Length > 2097152)
+                    {
+                        continue;
+                    }
+
+                    string newFileName = FileManager.Save(_env.WebRootPath, "uploads/product", file);
+
+                    ProductImage image = new ProductImage
+                    {
+                        IsPoster = false,
+                        Image = newFileName
+                    };
+
+                    product.ProductImages.Add(image);
+                }
+            }
+
+            _context.Products.Add(product);
+            _context.SaveChanges();
+
+            return RedirectToAction("index");
+        }
+
+
+        public IActionResult Edit(int id)
+        {
+            Product product = _context.Products.Include(x => x.ProductImages).Include(x => x.ProductAmenities).FirstOrDefault(x => x.Id == id);
+
+            if (product == null) return NotFound();
+
+            ViewBag.Teams = _context.Teams.ToList();
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Cities = _context.Cities.ToList();
+            ViewBag.Amenities = _context.Amenities.ToList();
+            ViewBag.Statuses = _context.Statuses.ToList();
+
+
+            product.AmenityIds = product.ProductAmenities.Select(x => x.AmenityId).ToList();
+
+
+            return View(product);
+        }
+
+        [HttpPost]
+        public IActionResult Edit(Product product)
+        {
+
+            if (!_context.Teams.Any(x => x.Id == product.TeamId)) ModelState.AddModelError("TeamId", "Team not found!");
+            if (!_context.Categories.Any(x => x.Id == product.CategoryId)) ModelState.AddModelError("CategoryId", "Category not found!");
+            if (!_context.Cities.Any(x => x.Id == product.CityId)) ModelState.AddModelError("CityId", "City not found!");
+            if (!_context.Statuses.Any(x => x.Id == product.StatusId)) ModelState.AddModelError("StatusId", "Status not found!");
+
+
+            if (!ModelState.IsValid) return View();
+
+            Product existProduct = _context.Products.Include(x => x.ProductImages).Include(x => x.ProductAmenities).FirstOrDefault(x => x.Id == product.Id);
+
+            if (existProduct == null) return NotFound();
+
+
+            existProduct.ProductAmenities.RemoveAll((x => !product.AmenityIds.Contains(x.AmenityId)));
+
+            if (product.AmenityIds != null)
+            {
+                foreach (var amenityId in product.AmenityIds.Where(x => !existProduct.ProductAmenities.Any(pa => pa.AmenityId == x)))
+                {
+                    ProductAmenity productAmenity = new ProductAmenity
+                    {
+                        AmenityId = amenityId,
+                        ProductId = product.Id
+                    };
+
+                    existProduct.ProductAmenities.Add(productAmenity);
+                }
+            }
+
+            if (product.PosterFile != null)
+            {
+                if (product.PosterFile.ContentType != "image/png" && product.PosterFile.ContentType != "image/jpeg")
+                {
+                    ModelState.AddModelError("PosterFile", "File type can be only jpeg,jpg or png!");
+                    return View();
+                }
+
+                if (product.PosterFile.Length > 2097152)
+                {
+                    ModelState.AddModelError("PosterFile", "File size can not be more than 2MB!");
+                    return View();
+                }
+
+                ProductImage poster = existProduct.ProductImages.FirstOrDefault(x => x.IsPoster == true);
+
+                string newPosterName = FileManager.Save(_env.WebRootPath, "uploads/product", product.PosterFile);
+
+                if (poster == null)
+                {
+                    poster = new ProductImage
+                    {
+                        IsPoster = true,
+                        Image = newPosterName,
+                        ProductId = product.Id
+                    };
+
+                    _context.ProductImages.Add(poster);
+                }
+                else
+                {
+                    FileManager.Delete(_env.WebRootPath, "uploads/product", poster.Image);
+                    poster.Image = newPosterName;
+                }
+            }
+
+
+
+            List<ProductImage> removablePhotos = existProduct.ProductImages.Where(x => x.IsPoster == false && !product.ProductImageIds.Contains(x.Id)).ToList();
+
+            foreach (var item in removablePhotos)
+            {
+                FileManager.Delete(_env.WebRootPath, "uploads/product", item.Image);
+            }
+
+            existProduct.ProductImages.RemoveAll(x => x.IsPoster == false && !product.ProductImageIds.Contains(x.Id));
+
+            if (product.ImageFiles != null)
+            {
+                foreach (var file in product.ImageFiles)
+                {
+                    if (file.ContentType != "image/png" && file.ContentType != "image/jpeg")
+                    {
+                        continue;
+                    }
+
+                    if (file.Length > 2097152)
+                    {
+                        continue;
+                    }
+
+                    string newFileName = FileManager.Save(_env.WebRootPath, "uploads/product", file);
+
+                    ProductImage image = new ProductImage
+                    {
+                        IsPoster = false,
+                        Image = newFileName
+                    };
+
+                    existProduct.ProductImages.Add(image);
+                }
+            }
+
+            existProduct.Name = product.Name;
+            existProduct.TeamId = product.TeamId;
+            existProduct.CategoryId = product.CategoryId;
+            existProduct.SalePrice = product.SalePrice;
+            existProduct.CostPrice = product.CostPrice;
+            existProduct.IsFeatured = product.IsFeatured;
+            existProduct.Rate = product.Rate;
+            existProduct.Desc = product.Desc;
+            existProduct.HomeArea = product.HomeArea;
+            existProduct.Rooms = product.Rooms;
+            existProduct.Bathrooms = product.Bathrooms;
+            existProduct.Bedrooms = product.Bedrooms;
+            existProduct.CreatedAt = product.CreatedAt;
+            existProduct.WhichFloor = product.WhichFloor;
+            existProduct.HouseFloor = product.HouseFloor;
+            existProduct.Location = product.Location;
+            existProduct.ParkingCount = product.ParkingCount;
+
+            _context.SaveChanges();
+            return RedirectToAction("index");
+        }
+
+
+
+        public IActionResult DeleteFetch(int id)
+        {
+            Product product = _context.Products.FirstOrDefault(x => x.Id == id);
+
+            if (product == null) return Json(new { status = 404 });
+
+            try
+            {
+                _context.Products.Remove(product);
+                _context.SaveChanges();
+            }
+            catch (Exception)
+            {
+                return Json(new { status = 500 });
+            }
+
+            return Json(new { status = 200 });
+        }
+    }
+}
