@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using QuarterTemplate.Models;
 using QuarterTemplate.ViewModels;
@@ -35,6 +36,16 @@ namespace QuarterTemplate.Controllers
             return View(homeVM);
         }
 
-      
+        public IActionResult GetProduct(int id)
+        {
+            Product product = _context.Products
+                .Include(x => x.ProductImages).Include(x => x.Category)
+                .Include(x => x.ProductAmenities).ThenInclude(x => x.Amenity)
+                .FirstOrDefault(x => x.Id == id);
+
+            return PartialView("_ProductModalPartial", product);
+        }
+
+
     }
 }

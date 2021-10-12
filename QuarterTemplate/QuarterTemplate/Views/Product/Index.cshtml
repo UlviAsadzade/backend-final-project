@@ -105,7 +105,7 @@
                                                         <div class="product-img-location">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="locations.html"><i class="flaticon-pin"></i> Belmont Gardens, @item.City.Name</a>
+                                                                    <a href="locations.html"><i class="flaticon-pin"></i> @item.City.Name</a>
                                                                 </li>
                                                             </ul>
                                                         </div>
@@ -126,7 +126,7 @@
                                                         <div class="product-hover-action">
                                                             <ul>
                                                                 <li>
-                                                                    <a href="#" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
+                                                                    <a href="#" class="show-product-modal" data-id="@item.Id" title="Quick View" data-bs-toggle="modal" data-bs-target="#quick_view_modal">
                                                                         <i class="flaticon-expand"></i>
                                                                     </a>
                                                                 </li>
@@ -136,7 +136,7 @@
                                                                     </a>
                                                                 </li>
                                                                 <li>
-                                                                    <a href="product-details.html" title="Product Details">
+                                                                    <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id" title="Product Details">
                                                                         <i class="flaticon-add"></i>
                                                                     </a>
                                                                 </li>
