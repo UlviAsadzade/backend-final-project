@@ -167,8 +167,15 @@
                                     <li>
                                         <a href="#"><i class="icon-user"></i></a>
                                         <ul>
-                                            <li><a href="login.html">Sign in</a></li>
-                                            <li><a href="register.html">Register</a></li>
+                                            @if (User.Identity.IsAuthenticated)
+                                            {
+                                                <li><a asp-controller="account" asp-action="logout">Sign out</a></li>
+                                            }
+                                            else
+                                            {
+                                                <li><a asp-controller="account" asp-action="login">Sign in</a></li>
+                                            }
+                                            <li><a asp-controller="account" asp-action="register">Register</a></li>
                                             <li><a href="account.html">My Account</a></li>
                                             <li><a href="wishlist.html">Wishlist</a></li>
                                         </ul>
