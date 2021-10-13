@@ -24,8 +24,20 @@ namespace QuarterTemplate.Models
         [StringLength(maximumLength: 300)]
         public string Desc { get; set; }
 
-        
+        [StringLength(maximumLength: 100)]
+        public string FacebookUrl { get; set; }
 
-     
+        [StringLength(maximumLength: 100)]
+        public string TwitterUrl { get; set; }
+
+        [StringLength(maximumLength: 100)]
+        public string LinkedinUrl { get; set; }
+
+        [StringLength(maximumLength: 100)]
+        public string YoutubeUrl { get; set; }
+
+
+
+
     }
 }

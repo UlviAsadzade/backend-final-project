@@ -142,6 +142,10 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
             existTeam.FullName = team.FullName;
             existTeam.Desc = team.Desc;
+            existTeam.FacebookUrl = team.FacebookUrl;
+            existTeam.TwitterUrl = team.TwitterUrl;
+            existTeam.LinkedinUrl = team.LinkedinUrl;
+            existTeam.YoutubeUrl = team.YoutubeUrl;
             
 
             _context.SaveChanges();

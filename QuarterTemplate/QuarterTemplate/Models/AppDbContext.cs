@@ -27,6 +27,7 @@ namespace QuarterTemplate.Models
         public DbSet<ProductImage> ProductImages { get; set; }
         public DbSet<ProductAmenity> ProductAmenities { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<WishlistItem> WishlistItems { get; set; }
 
 
     }

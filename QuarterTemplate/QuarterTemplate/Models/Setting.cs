@@ -53,13 +53,25 @@ namespace QuarterTemplate.Models
         public string FacebookIcon { get; set; }
 
         [StringLength(maximumLength: 100)]
+        public string FacebookUrl { get; set; }
+
+        [StringLength(maximumLength: 100)]
         public string TwitterIcon { get; set; }
+
+        [StringLength(maximumLength: 100)]
+        public string TwitterUrl { get; set; }
 
         [StringLength(maximumLength: 100)]
         public string LinkedinIcon { get; set; }
 
         [StringLength(maximumLength: 100)]
+        public string LinkedinUrl { get; set; }
+
+        [StringLength(maximumLength: 100)]
         public string YoutubeIcon { get; set; }
+
+        [StringLength(maximumLength: 100)]
+        public string YoutubeUrl { get; set; }
 
         [StringLength(maximumLength: 100)]
         public string AboutImage1 { get; set; }

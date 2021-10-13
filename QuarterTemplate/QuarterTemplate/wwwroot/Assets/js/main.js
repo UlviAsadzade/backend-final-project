@@ -2005,6 +2005,33 @@ $(document).ready(function () {
         $("#quickModal").modal("show")
     });
 
+
+    $(document).on("click", ".add-wishlist-btn", function (e) {
+        e.preventDefault();
+
+        var id = $(this).attr("data-id");
+
+        fetch('https://localhost:44313/product/addtowishlist/' + id)
+            .then(response => response.text())
+            .then(data => {
+                $('.show-wishlist-items').html(data);
+            })
+
+    });
+
+    $(document).on("click", ".delete-wishlistitem", function (e) {
+        e.preventDefault();
+
+        var id = $(this).attr("data-id");
+
+        fetch('https://localhost:44313/product/deletewishlistitem/' + id)
+            .then(response => response.text())
+            .then(data => {
+                $('.show-wishlist-items').html(data);
+            })
+
+    });
+
   
 
 
