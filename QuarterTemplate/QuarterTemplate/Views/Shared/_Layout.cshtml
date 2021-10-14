@@ -112,17 +112,9 @@
                         <div class="col">
                             <div class="site-logo-wrap">
                                 <div class="site-logo">
-                                    <a href="index.html"><img src="~/assets/img/@setting.HeaderLogo" alt="Logo"></a>
+                                    <a asp-controller="home" asp-action="index"><img src="~/uploads/setting/@setting.HeaderLogo" alt="Logo"></a>
                                 </div>
-                                <div class="get-support clearfix d-none">
-                                    <div class="get-support-icon">
-                                        <i class="icon-call"></i>
-                                    </div>
-                                    <div class="get-support-info">
-                                        <h6>Get Support</h6>
-                                        <h4><a href="tel:+123456789">123-456-789-10</a></h4>
-                                    </div>
-                                </div>
+                                
                             </div>
                         </div>
                         <div class="col header-menu-column">
@@ -415,7 +407,7 @@
                             <div class="footer-widget footer-about-widget">
                                 <div class="footer-logo">
                                     <div class="site-logo">
-                                        <img src="~/assets/img/@setting.FooterLogo" alt="Logo">
+                                        <img src="~/uploads/setting/@setting.FooterLogo" alt="Logo">
                                     </div>
                                 </div>
                                 <p>Lorem Ipsum is simply dummy text of the and typesetting industry. Lorem Ipsum is dummy text of the printing.</p>
@@ -449,10 +441,10 @@
                                 </div>
                                 <div class="ltn__social-media mt-20">
                                     <ul>
-                                        <li><a href="#" title="Facebook"><i class="@setting.FacebookIcon"></i></a></li>
-                                        <li><a href="#" title="Twitter"><i class="@setting.TwitterIcon"></i></a></li>
-                                        <li><a href="#" title="Linkedin"><i class="@setting.LinkedinIcon"></i></a></li>
-                                        <li><a href="#" title="Youtube"><i class="@setting.YoutubeIcon"></i></a></li>
+                                        <li><a @setting.FacebookUrl title="Facebook"><i class="@setting.FacebookIcon"></i></a></li>
+                                        <li><a @setting.TwitterUrl title="Twitter"><i class="@setting.TwitterIcon"></i></a></li>
+                                        <li><a @setting.LinkedinUrl title="Linkedin"><i class="@setting.LinkedinIcon"></i></a></li>
+                                        <li><a @setting.YoutubeUrl title="Youtube"><i class="@setting.YoutubeIcon"></i></a></li>
                                     </ul>
                                 </div>
                             </div>

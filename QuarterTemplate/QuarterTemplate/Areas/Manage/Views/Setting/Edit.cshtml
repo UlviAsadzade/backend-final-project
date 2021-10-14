@@ -1,0 +1,215 @@
+﻿@model Setting
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="container-fluid">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Phone1">Phone1</label>
+                <input asp-for="Phone1" class="form-control" placeholder="Phone1">
+                <span class="text-danger" asp-validation-for="Phone1"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Phone2">Phone2</label>
+                <input asp-for="Phone2" class="form-control" placeholder="Phone2">
+                <span class="text-danger" asp-validation-for="Phone2"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Email1">Email1</label>
+                <input asp-for="Email1" class="form-control" placeholder="Email1">
+                <span class="text-danger" asp-validation-for="Email1"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="Email2">Email2</label>
+                <input asp-for="Email2" class="form-control" placeholder="Email2">
+                <span class="text-danger" asp-validation-for="Email2"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="Address">Address</label>
+                <input asp-for="Address" class="form-control" placeholder="Address">
+                <span class="text-danger" asp-validation-for="Address"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="LocationIcon">LocationIcon</label>
+                <input asp-for="LocationIcon" class="form-control" placeholder="LocationIcon">
+                <span class="text-danger" asp-validation-for="LocationIcon"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="PhoneIcon">PhoneIcon</label>
+                <input asp-for="PhoneIcon" class="form-control" placeholder="PhoneIcon">
+                <span class="text-danger" asp-validation-for="PhoneIcon"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="EmailIcon">EmailIcon</label>
+                <input asp-for="EmailIcon" class="form-control" placeholder="EmailIcon">
+                <span class="text-danger" asp-validation-for="EmailIcon"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="FacebookIcon">FacebookIcon</label>
+                <input asp-for="FacebookIcon" class="form-control" placeholder="FacebookIcon">
+                <span class="text-danger" asp-validation-for="FacebookIcon"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="FacebookUrl">FacebookUrl</label>
+                <input asp-for="FacebookUrl" class="form-control" placeholder="FacebookUrl">
+                <span class="text-danger" asp-validation-for="FacebookUrl"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="TwitterIcon">TwitterIcon</label>
+                <input asp-for="TwitterIcon" class="form-control" placeholder="TwitterIcon">
+                <span class="text-danger" asp-validation-for="TwitterIcon"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="TwitterUrl">TwitterUrl</label>
+                <input asp-for="TwitterUrl" class="form-control" placeholder="TwitterUrl">
+                <span class="text-danger" asp-validation-for="TwitterUrl"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-3">
+                <label asp-for="LinkedinIcon">LinkedinIcon</label>
+                <input asp-for="LinkedinIcon" class="form-control" placeholder="LinkedinIcon">
+                <span class="text-danger" asp-validation-for="LinkedinIcon"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="LinkedinUrl">LinkedinUrl</label>
+                <input asp-for="LinkedinUrl" class="form-control" placeholder="LinkedinUrl">
+                <span class="text-danger" asp-validation-for="LinkedinUrl"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="YoutubeIcon">YoutubeIcon</label>
+                <input asp-for="YoutubeIcon" class="form-control" placeholder="YoutubeIcon">
+                <span class="text-danger" asp-validation-for="YoutubeIcon"></span>
+            </div>
+            <div class="form-group col-md-3">
+                <label asp-for="YoutubeUrl">YoutubeUrl</label>
+                <input asp-for="YoutubeUrl" class="form-control" placeholder="YoutubeUrl">
+                <span class="text-danger" asp-validation-for="YoutubeUrl"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label asp-for="AboutTitle">AboutTitle</label>
+                <input asp-for="AboutTitle" class="form-control" placeholder="AboutTitle">
+                <span class="text-danger" asp-validation-for="AboutTitle"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="AboutDesc">AboutDesc</label>
+                <input asp-for="AboutDesc" class="form-control" placeholder="AboutDesc">
+                <span class="text-danger" asp-validation-for="AboutDesc"></span>
+            </div>
+            <div class="form-group col-md-4">
+                <label asp-for="AboutText">AboutText</label>
+                <input asp-for="AboutText" class="form-control" placeholder="AboutText">
+                <span class="text-danger" asp-validation-for="AboutText"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="AboutRedirrectUrl">AboutRedirrectUrl</label>
+                <input asp-for="AboutRedirrectUrl" class="form-control" placeholder="AboutRedirrectUrl">
+                <span class="text-danger" asp-validation-for="AboutRedirrectUrl"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="AboutUrlText">AboutUrlText</label>
+                <input asp-for="AboutUrlText" class="form-control" placeholder="AboutUrlText">
+                <span class="text-danger" asp-validation-for="AboutUrlText"></span>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="HeaderLogoFile">HeaderLogoFile</label>
+                <input asp-for="HeaderLogoFile" class="form-control" placeholder="HeaderLogoFile">
+                <span class="text-danger" asp-validation-for="HeaderLogoFile"></span>
+            </div>
+            <div class="img-box">
+                <img src="~/uploads/setting/@Model.HeaderLogo" style="max-width:300px" />
+                <input type="hidden" asp-for="HeaderLogo" value="@Model.HeaderLogo" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="FooterLogoFile">FooterLogoFile</label>
+                <input asp-for="FooterLogoFile" class="form-control" placeholder="FooterLogoFile">
+                <span class="text-danger" asp-validation-for="FooterLogoFile"></span>
+            </div>
+            <div class="img-box">
+                <img src="~/uploads/setting/@Model.FooterLogo" style="max-width:300px" />
+                <input type="hidden" asp-for="FooterLogo" value="@Model.FooterLogo" />
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="PhoneImageFile">PhoneImageFile</label>
+                <input asp-for="PhoneImageFile" class="form-control" placeholder="PhoneImageFile">
+                <span class="text-danger" asp-validation-for="PhoneImageFile"></span>
+            </div>
+            <div class="img-box">
+                <img src="~/uploads/setting/@Model.PhoneImage" style="max-width:300px" />
+                <input type="hidden" asp-for="PhoneImage" />x
+                <span class="text-danger" asp-validation-for="PhoneImage"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="EmailImageFile">EmailImageFile</label>
+                <input asp-for="EmailImageFile" class="form-control" placeholder="EmailImageFile">
+                <span class="text-danger" asp-validation-for="EmailImageFile"></span>
+            </div>
+            <div class="img-box">
+                <img src="~/uploads/setting/@Model.EmailImage" style="max-width:300px" />
+                <input type="hidden" asp-for="EmailImage" value="@Model.EmailImage" />
+                <span class="text-danger" asp-validation-for="EmailImage"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="AboutImageBigFile">AboutImageBigFile</label>
+                <input asp-for="AboutImageBigFile" class="form-control" placeholder="AboutImageBigFile">
+                <span class="text-danger" asp-validation-for="AboutImageBigFile"></span>
+            </div>
+            <div class="img-box">
+                <img src="~/uploads/setting/@Model.AboutImage1" style="max-width:300px" />
+                <input type="hidden" asp-for="AboutImage1" />x
+                <span class="text-danger" asp-validation-for="AboutImage1"></span>
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="AboutImageLittleFile">AboutImageLittleFile</label>
+                <input asp-for="AboutImageLittleFile" class="form-control" placeholder="AboutImageLittleFile">
+                <span class="text-danger" asp-validation-for="AboutImageLittleFile"></span>
+            </div>
+            <div class="img-box">
+                <img src="~/uploads/setting/@Model.AboutImage2" style="max-width:300px" />
+                <input type="hidden" asp-for="AboutImage2" value="@Model.AboutImage2" />
+                <span class="text-danger" asp-validation-for="AboutImage2"></span>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label asp-for="AdressImageFile">AdressImageFile</label>
+                <input asp-for="AdressImageFile" class="form-control" placeholder="AdressImageFile">
+                <span class="text-danger" asp-validation-for="AdressImageFile"></span>
+            </div>
+            <div class="img-box">
+                <img src="~/uploads/setting/@Model.AdressImage" style="max-width:300px" />
+                <input type="hidden" asp-for="AdressImage" value="@Model.AdressImage" />
+            </div>
+            <div class="form-group col-md-6">
+                <label asp-for="VideoImageFile">VideoImageFile</label>
+                <input asp-for="VideoImageFile" class="form-control" placeholder="VideoImageFile">
+                <span class="text-danger" asp-validation-for="VideoImageFile"></span>
+            </div>
+            <div class="img-box">
+                <img src="~/uploads/setting/@Model.VideoImage" style="max-width:300px" />
+                <input type="hidden" asp-for="VideoImage" value="@Model.VideoImage" />
+            </div>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+    </form>
+</div>
+
