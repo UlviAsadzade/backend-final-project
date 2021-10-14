@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuarterTemplate.Models;
@@ -12,11 +13,13 @@ namespace QuarterTemplate.Controllers
 {
     public class AccountController : Controller
     {
+        private readonly AppDbContext _context;
         private readonly UserManager<AppUser> _userManager;
         private readonly SignInManager<AppUser> _signInManager;
 
-        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
+        public AccountController(AppDbContext context, UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
+            _context = context;
             _userManager = userManager;
             _signInManager = signInManager;
         }
@@ -109,6 +112,75 @@ namespace QuarterTemplate.Controllers
             await _signInManager.SignOutAsync();
 
             return RedirectToAction("index", "home");
+        }
+
+
+        [Authorize(Roles = "Member")]
+        public async Task<IActionResult> Profile()
+        {
+            AppUser member = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            ProfileViewModel profileVM = new ProfileViewModel
+            {
+                Email = member.Email,
+                FullName = member.FullName,
+                PhoneNumber = member.PhoneNumber,
+                UserName = member.UserName,
+                Orders = _context.Orders.Where(x=>x.AppUserId==member.Id).ToList()
+            };
+
+            return View(profileVM);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Member")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Profile(ProfileViewModel profileVM)
+        {
+            if (!ModelState.IsValid) return View();
+
+            AppUser member = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (!string.IsNullOrWhiteSpace(profileVM.ConfirmNewPassword) && !string.IsNullOrWhiteSpace(profileVM.NewPassword))
+            {
+                var passwordChangeResult = await _userManager.ChangePasswordAsync(member, profileVM.CurrentPassword, profileVM.NewPassword);
+
+                if (!passwordChangeResult.Succeeded)
+                {
+                    foreach (var item in passwordChangeResult.Errors)
+                    {
+                        ModelState.AddModelError("", item.Description);
+                    }
+
+                    return View();
+                }
+
+            }
+
+            if (member.Email != profileVM.Email && _userManager.Users.Any(x => x.NormalizedEmail == profileVM.Email.ToUpper()))
+            {
+                ModelState.AddModelError("Email", "This email has already been taken!");
+                return View();
+            }
+
+            member.FullName = profileVM.FullName;
+            member.Email = profileVM.Email;
+            member.PhoneNumber = profileVM.PhoneNumber;
+            
+
+            var result = await _userManager.UpdateAsync(member);
+
+            if (!result.Succeeded)
+            {
+                foreach (var item in result.Errors)
+                {
+                    ModelState.AddModelError("", item.Description);
+                }
+
+                return View();
+            }
+
+            return RedirectToAction("profile");
         }
     }
 }

@@ -33,8 +33,15 @@ using QuarterTemplate.Areas.Manage.ViewModels;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 4 "C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\Areas\Manage\Views\_ViewImports.cshtml"
+using QuarterTemplate.Models.Enums;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6b95021dd581783fea400a9cfa8ad9c0e5acc23b", @"/Areas/Manage/Views/Service/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2b05a1a6bd116da927a516327f8d9b96fb22dd0b", @"/Areas/Manage/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"441cf4475c92a0ea9e91519bc3913c162d688b99", @"/Areas/Manage/Views/_ViewImports.cshtml")]
     public class Areas_Manage_Views_Service_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<List<Service>>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("asp-action", "create", global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -79,7 +86,7 @@ using QuarterTemplate.Areas.Manage.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("\r\n\r\n<div class=\"container-fluid\">\r\n    <div class=\"d-flex justify-content-between align-items-center\">\r\n        <h1>Services</h1>\r\n        ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b95021dd581783fea400a9cfa8ad9c0e5acc23b6002", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b95021dd581783fea400a9cfa8ad9c0e5acc23b6246", async() => {
                 WriteLiteral("Create");
             }
             );
@@ -154,7 +161,7 @@ using QuarterTemplate.Areas.Manage.ViewModels;
 #line hidden
 #nullable disable
             WriteLiteral("</td>\r\n                \r\n                <td>\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b95021dd581783fea400a9cfa8ad9c0e5acc23b9272", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b95021dd581783fea400a9cfa8ad9c0e5acc23b9516", async() => {
                 WriteLiteral("Edit");
             }
             );
@@ -186,7 +193,7 @@ using QuarterTemplate.Areas.Manage.ViewModels;
             Write(__tagHelperExecutionContext.Output);
             __tagHelperExecutionContext = __tagHelperScopeManager.End();
             WriteLiteral("\r\n                    ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b95021dd581783fea400a9cfa8ad9c0e5acc23b11574", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("a", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "6b95021dd581783fea400a9cfa8ad9c0e5acc23b11818", async() => {
                 WriteLiteral("Delete");
             }
             );

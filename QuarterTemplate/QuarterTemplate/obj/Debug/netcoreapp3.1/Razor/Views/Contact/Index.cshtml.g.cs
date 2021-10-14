@@ -40,8 +40,15 @@ using QuarterTemplate.Services;
 #line default
 #line hidden
 #nullable disable
+#nullable restore
+#line 5 "C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\Views\_ViewImports.cshtml"
+using Microsoft.AspNetCore.Identity;
+
+#line default
+#line hidden
+#nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"678262abfc0707be90a640d6b52e8bdc572d0b65", @"/Views/Contact/Index.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"6164c15bcf79cae31e3ee8a11675ec071c85592a", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"a800c3de31e320d1926ae94f51b54970fa2d91e0", @"/Views/_ViewImports.cshtml")]
     public class Views_Contact_Index : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<Setting>
     {
         private static readonly global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute __tagHelperAttribute_0 = new global::Microsoft.AspNetCore.Razor.TagHelpers.TagHelperAttribute("alt", new global::Microsoft.AspNetCore.Html.HtmlString("Icon Image"), global::Microsoft.AspNetCore.Razor.TagHelpers.HtmlAttributeValueStyle.DoubleQuotes);
@@ -113,7 +120,7 @@ using QuarterTemplate.Services;
                         <div class=""ltn__contact-address-item ltn__contact-address-item-3 box-shadow"">
                             <div class=""ltn__contact-address-icon"">
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "678262abfc0707be90a640d6b52e8bdc572d0b657087", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "678262abfc0707be90a640d6b52e8bdc572d0b657319", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -160,7 +167,7 @@ AddHtmlAttributeValue("", 1452, Model.EmailImage, 1452, 17, false);
                         <div class=""ltn__contact-address-item ltn__contact-address-item-3 box-shadow"">
                             <div class=""ltn__contact-address-icon"">
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "678262abfc0707be90a640d6b52e8bdc572d0b659806", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "678262abfc0707be90a640d6b52e8bdc572d0b6510038", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -206,7 +213,7 @@ AddHtmlAttributeValue("", 2082, Model.PhoneImage, 2082, 17, false);
                         <div class=""ltn__contact-address-item ltn__contact-address-item-3 box-shadow"">
                             <div class=""ltn__contact-address-icon"">
                                 ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "678262abfc0707be90a640d6b52e8bdc572d0b6512438", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("img", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagOnly, "678262abfc0707be90a640d6b52e8bdc572d0b6512671", async() => {
             }
             );
             __Microsoft_AspNetCore_Mvc_Razor_TagHelpers_UrlResolutionTagHelper = CreateTagHelper<global::Microsoft.AspNetCore.Mvc.Razor.TagHelpers.UrlResolutionTagHelper>();
@@ -253,7 +260,7 @@ AddHtmlAttributeValue("", 2613, Model.LocationImage, 2613, 20, false);
                         <div class=""ltn__form-box contact-form-box box-shadow white-bg"">
                             <h4 class=""title-2"">Get A Quote</h4>
                             ");
-            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6515116", async() => {
+            __tagHelperExecutionContext = __tagHelperScopeManager.Begin("form", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6515349", async() => {
                 WriteLiteral(@"
                                 <div class=""row"">
                                     <div class=""col-md-6"">
@@ -270,7 +277,7 @@ AddHtmlAttributeValue("", 2613, Model.LocationImage, 2613, 20, false);
                                         <div class=""input-item"">
                                             <select class=""nice-select"">
                                                 ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6516424", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6516657", async() => {
                     WriteLiteral("Select Service Type");
                 }
                 );
@@ -284,7 +291,7 @@ AddHtmlAttributeValue("", 2613, Model.LocationImage, 2613, 20, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6517500", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6517733", async() => {
                     WriteLiteral("Property Management ");
                 }
                 );
@@ -298,7 +305,7 @@ AddHtmlAttributeValue("", 2613, Model.LocationImage, 2613, 20, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6518577", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6518810", async() => {
                     WriteLiteral("Mortgage Service ");
                 }
                 );
@@ -312,7 +319,7 @@ AddHtmlAttributeValue("", 2613, Model.LocationImage, 2613, 20, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6519651", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6519884", async() => {
                     WriteLiteral("Consulting Service");
                 }
                 );
@@ -326,7 +333,7 @@ AddHtmlAttributeValue("", 2613, Model.LocationImage, 2613, 20, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6520726", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6520959", async() => {
                     WriteLiteral("Home Buying");
                 }
                 );
@@ -340,7 +347,7 @@ AddHtmlAttributeValue("", 2613, Model.LocationImage, 2613, 20, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6521794", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6522027", async() => {
                     WriteLiteral("Home Selling");
                 }
                 );
@@ -354,7 +361,7 @@ AddHtmlAttributeValue("", 2613, Model.LocationImage, 2613, 20, false);
                 Write(__tagHelperExecutionContext.Output);
                 __tagHelperExecutionContext = __tagHelperScopeManager.End();
                 WriteLiteral("\r\n                                                ");
-                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6522863", async() => {
+                __tagHelperExecutionContext = __tagHelperScopeManager.Begin("option", global::Microsoft.AspNetCore.Razor.TagHelpers.TagMode.StartTagAndEndTag, "678262abfc0707be90a640d6b52e8bdc572d0b6523096", async() => {
                     WriteLiteral("Escrow Services");
                 }
                 );

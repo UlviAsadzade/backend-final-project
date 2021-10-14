@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json;
@@ -179,6 +180,38 @@ namespace QuarterTemplate.Controllers
 
             }
             return PartialView("_WishlistPartial", products);
+        }
+
+
+        [Authorize(Roles = "Member")]
+
+        public IActionResult CreateOrder(int id)
+        {
+            AppUser member = _userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin);
+
+            Product product = _context.Products.Include(x=>x.City).FirstOrDefault(x => x.Id == id);
+
+            if (product == null) return NotFound();
+
+            Order order = new Order
+            {
+                AppUserId = member.Id,
+                ProductId = product.Id,
+                ProductName = product.Name,
+                CostPrice = product.CostPrice,
+                SalePrice = product.SalePrice,
+                Address = product.City.Name,
+                FullName = member.FullName,
+                Email = member.Email,
+                CreatedAt = DateTime.UtcNow,
+                Status = Models.Enums.OrderStatus.Pending
+
+            };
+
+            _context.Orders.Add(order);
+            _context.SaveChanges();
+
+            return RedirectToAction("profile", "account");
         }
     }
 }

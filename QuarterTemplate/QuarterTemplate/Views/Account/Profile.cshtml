@@ -1,0 +1,163 @@
+﻿@model ProfileViewModel
+@{
+    ViewData["Title"] = "Profile";
+    var count = 1;
+}
+
+
+
+        <!-- BREADCRUMB AREA START -->
+        <div class="ltn__breadcrumb-area text-left bg-overlay-white-30 bg-image " data-bs-bg="~/assets/img/bg/14.jpg">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="ltn__breadcrumb-inner">
+                            <h1 class="page-title">My Account</h1>
+                            <div class="ltn__breadcrumb-list">
+                                <ul>
+                                    <li><a href="index.html"><span class="ltn__secondary-color"><i class="fas fa-home"></i></span> Home</a></li>
+                                    <li>My Account</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- BREADCRUMB AREA END -->
+        <!-- WISHLIST AREA START -->
+        <div class="liton__wishlist-area pb-70">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <!-- PRODUCT TAB AREA START -->
+                        <div class="ltn__product-tab-area">
+                            <div class="container">
+                                <div class="row">
+                                    <div class="col-lg-3">
+                                        <div class="ltn__tab-menu-list mb-50">
+                                            <div class="nav">
+                                                <a data-bs-toggle="tab" href="#liton_tab_1_2">Orders <i class="fas fa-file-alt"></i></a>
+                                                <a data-bs-toggle="tab" href="#liton_tab_1_5">Account Details <i class="fas fa-user"></i></a>
+                                                <a asp-controller="account" asp-action="logout">Logout <i class="fas fa-sign-out-alt"></i></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-9">
+                                        <div class="tab-content">
+                                            <div class="tab-pane fade" id="liton_tab_1_2">
+                                                <div class="ltn__myaccount-tab-content-inner">
+                                                    <div class="table-responsive">
+                                                        <table class="table">
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Order</th>
+                                                                    <th>Name</th>
+                                                                    <th>Date</th>
+                                                                    <th>Status</th>
+                                                                    <th>Total</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody>
+                                                                @foreach (var item in Model.Orders)
+                                                                {
+                                                                <tr>
+                                                                    <td>@(count++)</td>
+                                                                    <td>@item.ProductName</td>
+                                                                    <td>@item.CreatedAt</td>
+                                                                    <td>
+                                                                        @if (item.Status == QuarterTemplate.Models.Enums.OrderStatus.Accepted)
+                                                                        {
+                                                                            <span style="background-color:green;padding:5px;color:white;border-radius:10px">Accepted</span>
+                                                                        }
+                                                                        else if (item.Status == QuarterTemplate.Models.Enums.OrderStatus.Rejected)
+                                                                        {
+                                                                            <span style="background-color: red; padding: 5px; color: white; border-radius: 10px " >Rejected</span>
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            <span style="background-color: aquamarine; padding: 5px; color: white; border-radius: 10px ">Pending</span>
+                                                                        }
+                                                                    </td>
+                                                                    <td>$@item.SalePrice</td>
+                                                                </tr>
+
+                                                                }
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="tab-pane fade" id="liton_tab_1_5">
+                                                <div class="ltn__myaccount-tab-content-inner">
+                                                    <p>The following addresses will be used on the checkout page by default.</p>
+                                                    <div class="ltn__form-box">
+                                                        <form method="post">
+                                                            <div class="row mb-50">
+                                                                <div class="col-md-6">
+                                                                    <label asp-for="FullName">Full Name</label>
+                                                                    <input asp-for="FullName" type="text" id="FullName"
+                                                                           placeholder="Enter your full name">
+                                                                    <span class="text-danger" asp-validation-for="FullName"></span>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label asp-for="UserName">UserName</label>
+                                                                    <input asp-for="UserName" type="text" id="UserName"
+                                                                           placeholder="Enter your full name" disabled>
+                                                                    <span class="text-danger" asp-validation-for="UserName"></span>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label asp-for="Email">Email</label>
+                                                                    <input asp-for="Email" id="Email" placeholder="Enter Your Email Address Here..">
+                                                                    <span class="text-danger" asp-validation-for="Email"></span>
+                                                                </div>
+                                                                <div class="col-md-6">
+                                                                    <label asp-for="PhoneNumber">Phone number</label>
+                                                                    <input asp-for="PhoneNumber"  type="text" id="PhoneNumber"
+                                                                           placeholder="Enter your phone number">
+                                                                    <span class="text-danger" asp-validation-for="PhoneNumber"></span>
+                                                                </div>
+                                                            </div>
+                                                            <fieldset>
+                                                                <legend>Password change</legend>
+                                                                <div class="row">
+                                                                    <div class="col-md-12">
+                                                                        <label asp-for="CurrentPassword">Old Password</label>
+                                                                        <input asp-for="CurrentPassword" id="CurrentPassword" placeholder="Enter your old password">
+                                                                        <span class="text-danger" asp-validation-for="CurrentPassword"></span>
+
+                                                                        <label asp-for="NewPassword">NewPassword</label>
+                                                                        <input asp-for="NewPassword" id="NewPassword" placeholder="Enter your new password">
+                                                                        <span class="text-danger" asp-validation-for="NewPassword"></span>
+
+                                                                        <label asp-for="ConfirmNewPassword">Repeat Password</label>
+                                                                        <input asp-for="ConfirmNewPassword" id="ConfirmNewPassword" placeholder="Repeat your new password">
+                                                                        <span class="text-danger" asp-validation-for="ConfirmNewPassword"></span>
+
+
+                                                                    </div>
+                                                                </div>
+                                                                <div class="text-danger" asp-validation-summary="ModelOnly"></div>
+                                                            </fieldset>
+                                                            <div class="btn-wrapper">
+                                                                <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Save Changes</button>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- PRODUCT TAB AREA END -->
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- WISHLIST AREA START -->
+ 
+
+
+

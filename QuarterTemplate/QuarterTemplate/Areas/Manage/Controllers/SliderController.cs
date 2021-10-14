@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using QuarterTemplate.Models;
 using System;
@@ -10,6 +11,7 @@ using System.Threading.Tasks;
 namespace QuarterTemplate.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
 
     public class SliderController : Controller
     {

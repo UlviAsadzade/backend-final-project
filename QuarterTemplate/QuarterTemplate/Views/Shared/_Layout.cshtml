@@ -1,8 +1,15 @@
 ﻿@inject LayoutService service
+@inject UserManager<AppUser> userManager
 
 @{
     Setting setting = service.GetSetting();
     List<WishlistItemViewModel> wishlistItems = service.GetWishlistItems();
+    double totalCount = 0;
+    foreach (var item in wishlistItems)
+    {
+        totalCount += item.Price;
+    }
+    AppUser member = User.Identity.IsAuthenticated ? userManager.Users.FirstOrDefault(x => x.UserName == User.Identity.Name && !x.IsAdmin) : null;
 }
 
 <!doctype html>
@@ -168,9 +175,12 @@
                                     <li>
                                         <a href="#"><i class="icon-user"></i></a>
                                         <ul>
-                                            @if (User.Identity.IsAuthenticated)
+                                            @if (member != null)
                                             {
+                                                <li><a asp-controller="account" asp-action="profile">@member.FullName</a></li>
+
                                                 <li><a asp-controller="account" asp-action="logout">Sign out</a></li>
+
                                             }
                                             else
                                             {
@@ -178,8 +188,7 @@
                                                 <li><a asp-controller="account" asp-action="register">Register</a></li>
 
                                             }
-                                            <li><a href="account.html">My Account</a></li>
-                                            
+
                                         </ul>
                                     </li>
                                 </ul>
@@ -211,9 +220,26 @@
         </header>
         <!-- HEADER AREA END -->
         <!-- Utilize Cart Menu Start -->
-        <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu show-wishlist-items">
+        <div id="ltn__utilize-cart-menu" class="ltn__utilize ltn__utilize-cart-menu ">
+            <div class="ltn__utilize-menu-inner ltn__scrollbar">
+                <div class="ltn__utilize-menu-head">
+                    <span class="ltn__utilize-menu-title">Cart</span>
+                    <button class="ltn__utilize-close">×</button>
+                </div>
+                <div class="mini-cart-product-area ltn__scrollbar show-wishlist-items">
+                    @await Html.PartialAsync("_WishlistPartial", wishlistItems)
 
-            @await Html.PartialAsync("_WishlistPartial", wishlistItems)
+                </div>
+                <div class="mini-cart-footer">
+                    <div class="mini-cart-sub-total">
+                        <h5>Subtotal: <span>$@totalCount</span></h5>
+                    </div>
+
+                </div>
+
+            </div>
+
+
 
         </div>
         <!-- Utilize Cart Menu End -->
@@ -531,7 +557,7 @@
                         <div class="modal-body">
                             <div class="ltn__quick-view-modal-inner">
                                 <div class="modal-product-item " id="product-modal-detail">
-                                   
+
 
                                 </div>
                             </div>
@@ -609,8 +635,8 @@
                                                     <a href="wishlist.html" class="theme-btn-1 btn btn-effect-1">View Wishlist</a>
                                                 </div>
                                             </div>-->
-                                            <!-- additional-info -->
-                                            <!--<div class="additional-info d-none">
+        <!-- additional-info -->
+        <!--<div class="additional-info d-none">
                                                 <p>We want to give you <b>10% discount</b> for your first order, <br>  Use discount code at checkout</p>
                                                 <div class="payment-method">
                                                     <img src="~/assets/img/icons/payment.png" alt="#">

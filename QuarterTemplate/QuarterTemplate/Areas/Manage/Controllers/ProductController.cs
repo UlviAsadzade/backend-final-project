@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Hosting;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using QuarterTemplate.Helpers;
@@ -12,6 +13,7 @@ using System.Threading.Tasks;
 namespace QuarterTemplate.Areas.Manage.Controllers
 {
     [Area("manage")]
+    [Authorize(Roles = "Admin,SuperAdmin")]
 
     public class ProductController : Controller
     {
