@@ -20,7 +20,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         }
         public IActionResult Index()
         {
-            List<Order> orders = _context.Orders.ToList();
+            List<Order> orders = _context.Orders.OrderByDescending(x=>x.Id).ToList();
 
             return View(orders);
         }

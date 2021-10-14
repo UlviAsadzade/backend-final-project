@@ -31,7 +31,11 @@ namespace QuarterTemplate.Controllers
                 Settings=_context.Settings.FirstOrDefault(),
                 Cities=_context.Cities.ToList(),
                 Categories=_context.Categories.ToList(),
-                Statuses=_context.Statuses.ToList()
+                Statuses=_context.Statuses.ToList(),
+                LastSellProduct = _context.Orders.Include(x=>x.Product).ThenInclude(y=>y.ProductImages).Take(3).OrderByDescending(x=>x.Id).FirstOrDefault().Product,
+                FeaturedProducts = _context.Products.Include(x => x.ProductImages).
+                 Include(x => x.Status).Include(x => x.City).Include(x => x.Team).
+                 Where(x => x.IsFeatured).ToList()
             };
             return View(homeVM);
         }

@@ -146,6 +146,10 @@
                                                     <div class="product-info-bottom">
                                                         <div class="product-price">
                                                             <span>$@item.SalePrice</span>
+                                                            @if (item.Status.Name == "Rent")
+                                                            {
+                                                                <label>/Month</label>
+                                                            }
                                                         </div>
                                                     </div>
                                                 </div>
