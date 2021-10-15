@@ -247,8 +247,15 @@
                                     <div class="price_filter">
                                         <div class="price_slider_amount">
                                             <input type="submit" value="Your range:" />
-                                            <input type="text" class="amount" name="price" placeholder="Add Your Price" />
+                                            <br />
+                                            <input type="text" class="amount w-100" name="price" placeholder="Add Your Price" />
                                         </div>
+
+                                        <form>
+                                            <input type="hidden" id="minPrice"  name="minPrice" value="100" />
+                                            <input type="hidden" id="maxPrice" name="maxPrice" value="2000000" />
+                                            <input type="submit" value="filter" />
+                                        </form>
                                         <div class="slider-range"></div>
                                     </div>
                                 </div>

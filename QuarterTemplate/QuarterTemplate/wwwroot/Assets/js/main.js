@@ -1788,11 +1788,16 @@
         --------------------------------------------------------- */
         $( ".slider-range" ).slider({
             range: true,
-            min: 50,
-            max: 5000,
-            values: [ 50, 1500 ],
+            min: 100,
+            max: 2000000,
+            values: [ 100, 2000000 ],
             slide: function( event, ui ) {
-                $( ".amount" ).val( "$" + ui.values[ 0 ] + " - $" + ui.values[ 1 ] );
+                $(".amount").val("$" + ui.values[0] + " - $" + ui.values[1]);
+
+                let min = ui.values[0];
+                let max = ui.values[1];
+                $('#maxPrice').val(max);
+                $('#minPrice').val(min);
             }
         });
         $( ".amount" ).val( "$" + $( ".slider-range" ).slider( "values", 0 ) +

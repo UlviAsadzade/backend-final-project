@@ -26,11 +26,17 @@ namespace QuarterTemplate.Controllers
         }
 
 
-        public IActionResult Index()
+        public IActionResult Index(int? minPrice,int? maxPrice)
         {
+            var query = _context.Products.AsQueryable();
+            if(minPrice!=null) query = query.Where(x => x.SalePrice > minPrice);
+            if (maxPrice != null) query = query.Where(x => x.SalePrice < maxPrice);
+
+
+
             ProductViewModel productVM = new ProductViewModel
             {
-                Products = _context.Products.Include(x => x.ProductImages).Include(x=>x.City)
+                Products = query.Include(x => x.ProductImages).Include(x=>x.City)
                           .Include(x=>x.Team).Include(x => x.Status).ToList(),
 
                 Categories = _context.Categories.Include(x=>x.Products).ToList(),
