@@ -1,15 +1,50 @@
-﻿@model List<Product>
+﻿@model PagenatedList<Product>
 @{
     ViewData["Title"] = "Index";
-    int order = 0;
-
+    int order = (Model.PageIndex - 1) * 4;
 }
 <div class="container-fluid">
-    <div class="d-flex justify-content-between align-items-center">
-        <h1>Products</h1>
-        <a asp-action="create" class="btn btn-primary">Create</a>
+    <div class="d-flex justify-content-between">
+        <div class="col-md-2">
+            <h1>Products</h1>
+        </div>
+        <div class=" col-md-8">
+            <form method="get">
+                <div class="form-row">
+                    <div class="form-group col-md-5">
+                        <input name="search" class="form-control" placeholder="Enter text" value="@ViewBag.CurrentSearch">
+                    </div>
+                    <div class="form-group col-md-5">
+                        <select class="form-control" name="categoryId">
+                            <option value="">Category</option>
+                            @foreach (Category category in ViewBag.Categories)
+                            {
+                                if (category.Id == ViewBag.CurrentCategoryId)
+                                {
+                                    <option selected value="@category.Id">@category.Name</option>
+                                }
+                                else
+                                {
+                                    <option value="@category.Id">@category.Name</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="form-group col-md-5">
+                            <button type="submit" class="btn btn-primary">Filter</button>
+                        </div>
+                    </div>
+                </div>
+
+            </form>
+        </div>
+        <div class="col-md-2">
+            <a asp-action="create" class="btn btn-primary">Create</a>
+        </div>
     </div>
-    
+
+
     <table class="table">
         <thead>
             <tr>
@@ -42,6 +77,29 @@
 
         </tbody>
     </table>
+
+    <div class="d-flex justify-content-center">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+                <li class="page-item @(Model.HasPrev?"":"disabled")">
+                    <a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex-1)" asp-route-search="@ViewBag.CurrentSearch" asp-route-categoryId="@ViewBag.CurrentCategoryId" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                @for (int i = 1; i <= Model.TotalPages; i++)
+                {
+                    <li class="page-item @(i==Model.PageIndex?"active":"")"><a class="page-link" asp-action="index" asp-route-page="@i" asp-route-search="@ViewBag.CurrentSearch" asp-route-categoryId="@ViewBag.CurrentCategoryId" >@i</a></li>
+                }
+                <li class="page-item @(Model.HasNext?"":"disabled")">
+                    <a class="page-link" asp-action="index" asp-route-page="@(Model.PageIndex+1)" asp-route-search="@ViewBag.CurrentSearch" asp-route-categoryId="@ViewBag.CurrentCategoryId"  aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
 
 </div>

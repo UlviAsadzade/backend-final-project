@@ -26,19 +26,34 @@ namespace QuarterTemplate.Controllers
         }
 
 
-        public IActionResult Index(int? minPrice,int? maxPrice)
+        public IActionResult Index(int? minPrice,int? maxPrice, int page = 1, int? categoryId = null, int? amenityId = null, int? statusId = null, string search = null)
         {
-            var query = _context.Products.AsQueryable();
-            if(minPrice!=null) query = query.Where(x => x.SalePrice > minPrice);
+            var query = _context.Products.Include(x=>x.Team).AsQueryable();
+            if (minPrice!=null) query = query.Where(x => x.SalePrice > minPrice);
             if (maxPrice != null) query = query.Where(x => x.SalePrice < maxPrice);
 
+            ViewBag.CurrentCategoryId = categoryId;
+            ViewBag.CurrentAmenityId = amenityId;
+            ViewBag.CurrentStatusId = statusId;
+            ViewBag.CurrentSearch = search;
 
+            if (!string.IsNullOrWhiteSpace(search))
+                query = query.Where(x => x.Name.Contains(search));
+
+            if (categoryId != null)
+                query = query.Where(x => x.CategoryId == categoryId);
+
+            if (amenityId != null)
+                query = query.Where(x => x.ProductAmenities.Any(y => y.AmenityId == amenityId));
+
+            if (statusId != null)
+                query = query.Where(x => x.StatusId == statusId);
+
+            var pagenatedBooks = PagenatedList<Product>.Create(query.Include(x => x.Category).Include(x=>x.City).Include(x=>x.Team).Include(x => x.ProductImages), 4, page);
 
             ProductViewModel productVM = new ProductViewModel
             {
-                Products = query.Include(x => x.ProductImages).Include(x=>x.City)
-                          .Include(x=>x.Team).Include(x => x.Status).ToList(),
-
+                Products = pagenatedBooks,
                 Categories = _context.Categories.Include(x=>x.Products).ToList(),
                 Amenities = _context.Amenities.Include(x=>x.ProductAmenities).ToList(),
                 Statuses = _context.Statuses.Include(x=>x.Products).ToList()

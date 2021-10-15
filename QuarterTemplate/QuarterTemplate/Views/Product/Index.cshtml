@@ -56,17 +56,7 @@
                                         </select>
                                     </div>
                                 </li>
-                                <li>
-                                    <div class="short-by text-center">
-                                        <select class="nice-select">
-                                            <option>Per Page: 12</option>
-                                            <option>Per Page: 20</option>
-                                            <option>Per Page: 30</option>
-                                            <option>Per Page: 50</option>
-                                            <option>Per Page: 100</option>
-                                        </select>
-                                    </div>
-                                </li>
+                              
                             </ul>
                         </div>
                         <div class="tab-content">
@@ -77,7 +67,7 @@
                                             <!-- Search Widget -->
                                             <div class="ltn__search-widget mb-30">
                                                 <form action="#">
-                                                    <input type="text" name="search" placeholder="Search your keyword...">
+                                                    <input type="text" name="search" placeholder="Search your keyword..." value="@ViewBag.CurrentSearch">
                                                     <button type="submit"><i class="fas fa-search"></i></button>
                                                 </form>
                                             </div>
@@ -164,13 +154,32 @@
                         <div class="ltn__pagination-area text-center">
                             <div class="ltn__pagination">
                                 <ul>
-                                    <li><a href="#"><i class="fas fa-angle-double-left"></i></a></li>
-                                    <li><a href="#">1</a></li>
-                                    <li class="active"><a href="#">2</a></li>
-                                    <li><a href="#">3</a></li>
-                                    <li><a href="#">...</a></li>
-                                    <li><a href="#">10</a></li>
-                                    <li><a href="#"><i class="fas fa-angle-double-right"></i></a></li>
+                                    <li class="page-item  @(Model.Products.HasPrev ? "" : "disabled")">
+                                        <a class="page-link" asp-action="index" asp-route-page="@(Model.Products.PageIndex-1)" asp-route-search="@ViewBag.CurrentSearch"
+                                           asp-route-categoryId="@ViewBag.CurrentCategoryId" asp-route-statusId="@ViewBag.CurrentStatusId"
+                                           asp-route-amenityId="@ViewBag.CurrentAmenityId">
+                                            <i class="fas fa-angle-double-left"></i>
+                                        </a>
+                                    </li>
+
+                                    @for (int i = 1; i <= Model.Products.TotalPages; i++)
+                                    {
+                                        <li class="page-item @(i==Model.Products.PageIndex?"active":"")">
+                                            <a class="page-link" asp-action="index" asp-route-page="@i" asp-route-search="@ViewBag.CurrentSearch" asp-route-categoryId="@ViewBag.CurrentCategoryId"
+                                               asp-route-statusId="@ViewBag.CurrentStatusId" asp-route-amenityId="@ViewBag.CurrentAmenityId">@i</a>
+                                        </li>
+
+                                    }
+
+
+                                    <li class="page-item @(Model.Products.HasNext?"":"disabled")">
+                                    <a class="page-link" asp-action="index" asp-route-page="@(Model.Products.PageIndex+1)" asp-route-search="@ViewBag.CurrentSearch"
+                                           asp-route-categoryId="@ViewBag.CurrentCategoryId" asp-route-statusId="@ViewBag.CurrentStatusId"
+                                           asp-route-amenityId="@ViewBag.CurrentAmenityId">
+
+                                        <i class="fas fa-angle-double-right"></i>
+                                    </a>
+                                    </li>
                                 </ul>
                             </div>
                         </div>
@@ -186,12 +195,14 @@
                                     @foreach (var item in Model.Categories)
                                     {
                                         <li>
-                                            <label class="checkbox-item">
-                                                @item.Name
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                            <span class="categorey-no">@item.Products.Count()</span>
+                                                <label class="checkbox-item">
+                                                    <a asp-action="index" asp-controller="product" asp-route-categoryId="@item.Id">
+                                                        @item.Name
+                                                        <input type="checkbox" @(item.Id == ViewBag.CurrentCategoryId ? "checked" : "")>
+                                                        <span class="checkmark"></span>
+                                                    </a>
+                                                </label>
+                                                <span class="categorey-no">@item.Products.Count()</span>
                                         </li>
 
                                     }
@@ -203,9 +214,11 @@
                                     {
                                         <li>
                                             <label class="checkbox-item">
-                                                @item.Name
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
+                                                <a asp-action="index" asp-controller="product" asp-route-amenityId="@item.Id">
+                                                    @item.Name
+                                                    <input type="checkbox" @(item.Id == ViewBag.CurrentAmenityId ? "checked" : "")>
+                                                    <span class="checkmark"></span>
+                                                </a>
                                             </label>
                                             <span class="categorey-no">@item.ProductAmenities.Count()</span>
                                         </li>
@@ -213,34 +226,26 @@
                                     }
                                 </ul>
                                 <hr>
-                                <h4 class="ltn__widget-title">Price Renge</h4>
+
+                                <h4 class="ltn__widget-title">Status</h4>
                                 <ul>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Low Budget
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">$5,000 - $10,000</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            Medium
-                                            <input type="checkbox" checked="checked">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">$10,000 - $30,000</span>
-                                    </li>
-                                    <li>
-                                        <label class="checkbox-item">
-                                            High Budget
-                                            <input type="checkbox">
-                                            <span class="checkmark"></span>
-                                        </label>
-                                        <span class="categorey-no">$30,000 Up</span>
-                                    </li>
+                                    @foreach (var item in Model.Statuses)
+                                    {
+                                        <li>
+                                            <label class="checkbox-item">
+                                                <a asp-action="index" asp-controller="product" asp-route-statusId="@item.Id">
+                                                    @item.Name
+                                                    <input type="checkbox" @(item.Id == ViewBag.CurrentStatusId ? "checked" : "")>
+                                                    <span class="checkmark"></span>
+                                                </a>
+                                            </label>
+                                            <span class="categorey-no">@item.Products.Count()</span>
+                                        </li>
+
+                                    }
                                 </ul>
                                 <hr>
+
                                 <!-- Price Filter Widget -->
                                 <div class="widget--- ltn__price-filter-widget">
                                     <h4 class="ltn__widget-title ltn__widget-title-border---">Filter by price</h4>
@@ -252,30 +257,16 @@
                                         </div>
 
                                         <form>
-                                            <input type="hidden" id="minPrice"  name="minPrice" value="100" />
+                                            <input type="hidden" id="minPrice" name="minPrice" value="100" />
                                             <input type="hidden" id="maxPrice" name="maxPrice" value="2000000" />
-                                            <input type="submit" value="filter" />
+                                            <input type="submit" value="Filter" />
                                         </form>
                                         <div class="slider-range"></div>
                                     </div>
                                 </div>
                                 <hr>
-                                
-                                <h4 class="ltn__widget-title">Status</h4>
-                                <ul>
-                                    @foreach (var item in Model.Statuses)
-                                    {
-                                        <li>
-                                            <label class="checkbox-item">
-                                                @item.Name
-                                                <input type="checkbox" checked="checked">
-                                                <span class="checkmark"></span>
-                                            </label>
-                                            <span class="categorey-no">@item.Products.Count()</span>
-                                        </li>
 
-                                    }
-                                </ul>
+
                             </div>
                            
 

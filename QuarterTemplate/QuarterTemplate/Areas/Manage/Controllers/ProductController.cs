@@ -26,11 +26,25 @@ namespace QuarterTemplate.Areas.Manage.Controllers
             _env = env;
         }
 
-        public IActionResult Index()
+        public IActionResult Index(int page = 1, string search = null, int? categoryId = null)
         {
-            List<Product> products = _context.Products.Include(x => x.Team).Include(x => x.Category).Include(x => x.ProductImages).ToList();
+            var query = _context.Products.Include(x=>x.Team).AsQueryable();
 
-            return View(products);
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.CurrentSearch = search;
+            ViewBag.CurrentCategoryId = categoryId;
+
+            if (!string.IsNullOrWhiteSpace(search))
+                query = query.Where(x => x.Name.Contains(search) || x.Team.FullName.Contains(search));
+
+            if (categoryId != null)
+                query = query.Where(x => x.CategoryId == categoryId);
+
+
+            var pagenatedBooks = PagenatedList<Product>.Create(query.Include(x => x.Category).Include(x => x.ProductImages), 4, page);
+
+            return View(pagenatedBooks);
+
         }
 
         public IActionResult Create()
