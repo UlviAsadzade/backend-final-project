@@ -37,6 +37,30 @@ namespace QuarterTemplate.Controllers
                  Include(x => x.Status).Include(x => x.City).Include(x => x.Team).
                  Where(x => x.IsFeatured).ToList()
             };
+
+            var products = _context.Products.ToList();
+            var orders = _context.Orders.ToList();
+            double totalArea = 0;
+            int totalSold = 0;
+            int totalRooms = 0;
+
+            foreach (var item in products)
+            {
+                totalArea += item.HomeArea;
+                totalRooms += item.Rooms;
+            }
+
+            foreach (var item in orders)
+            {
+                totalSold += ((int)(item.Status = Models.Enums.OrderStatus.Accepted));
+            }
+
+            ViewBag.TotalArea = totalArea;
+            ViewBag.TotalSold = totalSold;
+            ViewBag.TotalCount = products.Count();
+            ViewBag.TotalRooms = totalRooms;
+
+
             return View(homeVM);
         }
 
