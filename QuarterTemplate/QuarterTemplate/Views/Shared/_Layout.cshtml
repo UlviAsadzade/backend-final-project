@@ -189,7 +189,7 @@
                             <div class="mini-cart-icon">
                                 <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                     <i class="flaticon-heart-1"></i>
-                                    <sup>@wishlistItems.Count()</sup>
+                                    <sup >@wishlistItems.Count()</sup>
                                 </a>
                             </div>
 
@@ -218,7 +218,7 @@
                     <span class="ltn__utilize-menu-title">Cart</span>
                     <button class="ltn__utilize-close">×</button>
                 </div>
-                <div class="mini-cart-product-area ltn__scrollbar show-wishlist-items">
+                <div class="mini-cart-product-area ltn__scrollbar show-wishlist-items"  >
                     @await Html.PartialAsync("_WishlistPartial", wishlistItems)
 
                 </div>

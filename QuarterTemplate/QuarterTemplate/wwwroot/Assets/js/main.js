@@ -2020,6 +2020,7 @@ $(document).ready(function () {
             .then(response => response.text())
             .then(data => {
                 $('.show-wishlist-items').html(data);
+               
             })
 
     });
@@ -2033,6 +2034,7 @@ $(document).ready(function () {
             .then(response => response.text())
             .then(data => {
                 $('.show-wishlist-items').html(data);
+               
             })
 
     });
