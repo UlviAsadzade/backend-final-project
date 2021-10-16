@@ -16,5 +16,7 @@ namespace QuarterTemplate.ViewModels
 
         public List<Status> Statuses { get; set; }
 
+
+
     }
 }

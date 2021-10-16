@@ -65,13 +65,65 @@ namespace QuarterTemplate.Controllers
 
         public IActionResult Detail(int id)
         {
+            if (!ModelState.IsValid) return View();
+
             Product product = _context.Products.Include(x=>x.ProductImages).Include(x => x.Team).Include(x=>x.City)
                 .Include(x => x.Category).Include(x => x.ProductAmenities).ThenInclude(x=>x.Amenity)
                 .Include(x=>x.Status).FirstOrDefault(x => x.Id == id);
 
-            ViewBag.SocialMedias = _context.Settings.ToList();
+            List<Review> reviews = _context.Reviews.Include(x => x.AppUser).Where(x => x.IsAccepted && x.ProductId == id).ToList();
+            Order order = _context.Orders.Include(x => x.AppUser).FirstOrDefault(x => x.Product.Id == id);
 
-            return View(product);
+
+            ViewBag.Settings = _context.Settings.FirstOrDefault();
+            ViewBag.SocialMedias = _context.Settings.ToList();
+            ViewBag.Categories = _context.Categories.Include(x => x.Products).ToList();
+            ViewBag.SameProducts = _context.Products.Include(x => x.ProductImages).Include(x=>x.Team)
+                .Include(x => x.City).Include(x => x.Status).ToList();
+
+            ReviewViewModel reviewVm = new ReviewViewModel
+            {
+                Product = product,
+                Reviews = reviews,
+                Order = order
+            };
+
+            return View(reviewVm);
+        }
+
+
+        [Authorize(Roles = "Member")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Comment(int id, ReviewViewModel model)
+        {
+
+            Product product = _context.Products.Find(id);
+            if (product == null) return NotFound();
+
+            AppUser member = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            if (model.Text.Length > 250)
+            {
+                ModelState.AddModelError("Text", "Your text is very length");
+                return RedirectToAction("index", "error");
+            }
+
+            Review review = new Review
+            {
+                AppUserId = member.Id,
+                ProductId = id,
+                Rate = model.Rate,
+                Text = model.Text,
+                CreatedAt = DateTime.UtcNow
+            };
+
+
+            _context.Reviews.Add(review);
+
+            await _context.SaveChangesAsync();
+
+            return Redirect(HttpContext.Request.Headers["Referer"].ToString());
         }
 
 

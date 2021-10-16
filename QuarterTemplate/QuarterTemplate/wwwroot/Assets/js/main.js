@@ -2036,6 +2036,18 @@ $(document).ready(function () {
             })
 
     });
+
+
+    let ranks = document.querySelectorAll('.rank');
+
+    ranks.forEach(function (elem, index) {
+        elem.addEventListener('click', function () {
+            document.querySelector('#rate').value = index + 1;
+            for (let i = 0; i <= index; i++) {
+                ranks[i].style.color = 'red';
+            }
+        })
+    })
    
 
   

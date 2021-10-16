@@ -1,0 +1,49 @@
+﻿@model List<Review>
+@{
+    ViewData["Title"] = "Index";
+    int index = 0;
+}
+
+<div class="container-fluid">
+    <div class="d-flex justify-content-between align-items-center">
+        <h1>Reviews</h1>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">User Name</th>
+                <th scope="col">Text</th>
+                <th scope="col">Date</th>
+                <th scope="col">Status</th>
+                <th scope="col">Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var review in Model)
+            {
+                index++;
+            <tr>
+                <th scope="row">@index</th>
+                <td>@review.AppUser.UserName</td>
+                <td>@review.Text</td>
+                <td>@review.CreatedAt.AddHours(4).ToString("HH:mm dd MMM yyyy")</td>
+
+                <td>
+                    <h5>
+                        <span class="badge badge-@(review.IsAccepted == true?"success":"info")">
+                            @(review.IsAccepted == true ? "accepted":"pending")
+                        </span>
+                    </h5>
+
+                </td>
+                <td>
+                    <a asp-action="edit" asp-route-id="@review.Id" class="btn btn-warning">Edit</a>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>
+</div>
+

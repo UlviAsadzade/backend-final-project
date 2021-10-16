@@ -77,6 +77,9 @@ namespace QuarterTemplate.Models
         [NotMapped]
         public List<int> AmenityIds { get; set; } = new List<int>();
 
+        public List<Review> Reviews { get; set; }
+
+
 
 
 
