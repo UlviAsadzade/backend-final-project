@@ -42,6 +42,7 @@ namespace QuarterTemplate
 
 
             services.AddScoped<LayoutService>();
+            services.AddScoped<IEmailService, EmailService>();
             services.AddHttpContextAccessor();
             services.AddSession();
 

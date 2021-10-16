@@ -205,3 +205,7 @@ C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\Quarte
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Account\AddAdmin.cshtml.g.cs
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Review\Index.cshtml.g.cs
 C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\Razor\Areas\Manage\Views\Review\Edit.cshtml.g.cs
+C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\bin\Debug\netcoreapp3.1\MailKit.dll
+C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\bin\Debug\netcoreapp3.1\MimeKit.dll
+C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
+C:\Users\lenovo\OneDrive\Masaüstü\backend-final-project\QuarterTemplate\QuarterTemplate\obj\Debug\netcoreapp3.1\QuarterTemplate.csproj.AssemblyReference.cache
