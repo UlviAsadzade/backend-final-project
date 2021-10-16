@@ -35,7 +35,8 @@ namespace QuarterTemplate.Controllers
                 LastSellProduct = _context.Orders.Include(x=>x.Product).ThenInclude(y=>y.ProductImages).Take(3).OrderByDescending(x=>x.Id).FirstOrDefault().Product,
                 FeaturedProducts = _context.Products.Include(x => x.ProductImages).
                  Include(x => x.Status).Include(x => x.City).Include(x => x.Team).
-                 Where(x => x.IsFeatured).ToList()
+                 Where(x => x.IsFeatured).ToList(),
+                Reviews = _context.Reviews.Include(x=>x.AppUser).ToList()
             };
 
             var products = _context.Products.ToList();

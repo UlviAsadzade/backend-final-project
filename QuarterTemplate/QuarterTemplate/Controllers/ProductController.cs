@@ -26,7 +26,7 @@ namespace QuarterTemplate.Controllers
         }
 
 
-        public IActionResult Index(int? minPrice,int? maxPrice, int page = 1, int? categoryId = null, int? amenityId = null, int? statusId = null, string search = null)
+        public IActionResult Index(int? minPrice,int? maxPrice, int page = 1, int? categoryId = null, int? amenityId = null, int? statusId = null, int? cityId = null, string search = null)
         {
             var query = _context.Products.Include(x=>x.Team).AsQueryable();
             if (minPrice!=null) query = query.Where(x => x.SalePrice > minPrice);
@@ -36,6 +36,7 @@ namespace QuarterTemplate.Controllers
             ViewBag.CurrentAmenityId = amenityId;
             ViewBag.CurrentStatusId = statusId;
             ViewBag.CurrentSearch = search;
+            ViewBag.CurrentCity = cityId;
 
             if (!string.IsNullOrWhiteSpace(search))
                 query = query.Where(x => x.Name.Contains(search));
@@ -48,6 +49,9 @@ namespace QuarterTemplate.Controllers
 
             if (statusId != null)
                 query = query.Where(x => x.StatusId == statusId);
+
+            if (cityId != null)
+                query = query.Where(x => x.CityId == cityId);
 
             var pagenatedBooks = PagenatedList<Product>.Create(query.Include(x => x.Category).Include(x=>x.City).Include(x=>x.Team).Include(x => x.ProductImages), 4, page);
 

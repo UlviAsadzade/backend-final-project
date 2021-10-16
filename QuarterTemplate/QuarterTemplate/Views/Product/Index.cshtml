@@ -157,7 +157,7 @@
                                     <li class="page-item  @(Model.Products.HasPrev ? "" : "disabled")">
                                         <a class="page-link" asp-action="index" asp-route-page="@(Model.Products.PageIndex-1)" asp-route-search="@ViewBag.CurrentSearch"
                                            asp-route-categoryId="@ViewBag.CurrentCategoryId" asp-route-statusId="@ViewBag.CurrentStatusId"
-                                           asp-route-amenityId="@ViewBag.CurrentAmenityId">
+                                           asp-route-amenityId="@ViewBag.CurrentAmenityId" asp-route-cityId="@ViewBag.CurrentCity">
                                             <i class="fas fa-angle-double-left"></i>
                                         </a>
                                     </li>
@@ -166,7 +166,7 @@
                                     {
                                         <li class="page-item @(i==Model.Products.PageIndex?"active":"")">
                                             <a class="page-link" asp-action="index" asp-route-page="@i" asp-route-search="@ViewBag.CurrentSearch" asp-route-categoryId="@ViewBag.CurrentCategoryId"
-                                               asp-route-statusId="@ViewBag.CurrentStatusId" asp-route-amenityId="@ViewBag.CurrentAmenityId">@i</a>
+                                               asp-route-statusId="@ViewBag.CurrentStatusId" asp-route-amenityId="@ViewBag.CurrentAmenityId" asp-route-cityId="@ViewBag.CurrentCity">@i</a>
                                         </li>
 
                                     }
@@ -175,7 +175,7 @@
                                     <li class="page-item @(Model.Products.HasNext?"":"disabled")">
                                     <a class="page-link" asp-action="index" asp-route-page="@(Model.Products.PageIndex+1)" asp-route-search="@ViewBag.CurrentSearch"
                                            asp-route-categoryId="@ViewBag.CurrentCategoryId" asp-route-statusId="@ViewBag.CurrentStatusId"
-                                           asp-route-amenityId="@ViewBag.CurrentAmenityId">
+                                           asp-route-amenityId="@ViewBag.CurrentAmenityId" asp-route-cityId="@ViewBag.CurrentCity">
 
                                         <i class="fas fa-angle-double-right"></i>
                                     </a>
