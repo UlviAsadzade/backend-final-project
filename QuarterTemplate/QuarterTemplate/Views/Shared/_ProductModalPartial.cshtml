@@ -10,30 +10,18 @@
         <div class="modal-product-info">
             <div class="product-ratting">
                 <ul>
-                    @*@for (int i = 1; i <= 5; i++)
-        {
-            if (i <= Model.Rate)
-            {
-                <li><a href="#"><span class="fas fa-star star_on"></span></a></li>
+                    @if (Model.Reviews.Count() > 0)
+                    {
 
+                        @for (int i = 0; i < Math.Ceiling((double)(Model.Reviews.Average(x => x.Rate))); i++)
+                        {
+                            <li><a href="#"><i class="fas fa-star"></i></a></li>
+                        }
 
-            }
-            else
-            {
-                <li><a href="#"><span class="fas fa-star "></span></a></li>
+                        <li class="review-total"> <a href="#"> ( @Model.Reviews.Count() Reviews )</a></li>
+                    }
 
-
-
-            }
-        }*@
-
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star"></i></a></li>
-                    <li><a href="#"><i class="fas fa-star-half-alt"></i></a></li>
-                    <li><a href="#"><i class="far fa-star"></i></a></li>
-                    <li class="review-total"> <a href="#"> ( 95 Reviews )</a></li>
+                   
                 </ul>
             </div>
             <h3><a href="product-details.html">@Model.Name</a></h3>

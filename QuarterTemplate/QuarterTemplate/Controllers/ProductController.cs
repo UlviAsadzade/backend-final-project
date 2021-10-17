@@ -103,7 +103,7 @@ namespace QuarterTemplate.Controllers
         {
 
             Product product = _context.Products.Find(id);
-            if (product == null) return NotFound();
+            if (product == null) return RedirectToAction("index", "error");
 
             AppUser member = await _userManager.FindByNameAsync(User.Identity.Name);
 
@@ -136,7 +136,7 @@ namespace QuarterTemplate.Controllers
             Product product = _context.Products.Include(x => x.ProductImages).FirstOrDefault(x => x.Id == id);
             WishlistItemViewModel wishlistItem = null;
 
-            if (product == null) return NotFound();
+            if (product == null) return RedirectToAction("index", "error");
 
             AppUser member = null;
 
@@ -218,7 +218,7 @@ namespace QuarterTemplate.Controllers
         {
             Product product = _context.Products.Include(x => x.ProductImages).FirstOrDefault(x => x.Id == id);
             WishlistItemViewModel wishlistItem = null;
-            if (product == null) return NotFound();
+            if (product == null) return RedirectToAction("index", "error");
 
             AppUser member = null;
 
@@ -268,7 +268,7 @@ namespace QuarterTemplate.Controllers
 
             Product product = _context.Products.Include(x=>x.City).FirstOrDefault(x => x.Id == id);
 
-            if (product == null) return NotFound();
+            if (product == null) return RedirectToAction("index", "error");
 
             Order order = new Order
             {

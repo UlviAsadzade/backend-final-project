@@ -42,7 +42,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
 
             Setting existSetting = _context.Settings.FirstOrDefault();
-            if (existSetting == null) return NotFound();
+            if (existSetting == null) return RedirectToAction("index", "error", new {area="" });
 
             if (!ModelState.IsValid) return View(existSetting);
 

@@ -51,7 +51,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Amenity amenity = _context.Amenities.FirstOrDefault(x => x.Id == id);
 
-            if (amenity == null) return NotFound();
+            if (amenity == null) return RedirectToAction("index", "error");
 
             return View(amenity);
         }
@@ -61,7 +61,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Amenity existAmenity = _context.Amenities.FirstOrDefault(x => x.Id == amenity.Id);
 
-            if (existAmenity == null) return NotFound();
+            if (existAmenity == null) return RedirectToAction("index", "error");
 
             existAmenity.Name = amenity.Name;
             existAmenity.Icon = amenity.Icon;

@@ -193,7 +193,7 @@
                             <div class="mini-cart-icon">
                                 <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                     <i class="flaticon-heart-1"></i>
-                                    <sup>@wishlistItems.Count()</sup>
+                                    <sup >@wishlistItems.Count()</sup>
                                 </a>
                             </div>
 
@@ -222,7 +222,7 @@
                     <span class="ltn__utilize-menu-title">Cart</span>
                     <button class="ltn__utilize-close">×</button>
                 </div>
-                <div class="mini-cart-product-area ltn__scrollbar show-wishlist-items"  >
+                <div class="mini-cart-product-area ltn__scrollbar show-wishlist-items">
                     @await Html.PartialAsync("_WishlistPartial", wishlistItems)
 
                 </div>
@@ -458,12 +458,12 @@
                                 <h4 class="footer-title">Company</h4>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li><a href="about.html">About</a></li>
-                                        <li><a href="blog.html">Blog</a></li>
-                                        <li><a href="shop.html">All Products</a></li>
-                                        <li><a href="locations.html">Locations Map</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                        <li><a href="contact.html">Contact us</a></li>
+                                        <li><a asp-action="index" asp-controller="about">About</a></li>
+                                        <li><a asp-action="index" asp-controller="home">Blog</a></li>
+                                        <li><a asp-action="index" asp-controller="product">All Products</a></li>
+                                        <li><a asp-action="index" asp-controller="contact">Locations Map</a></li>
+                                        <li><a asp-action="index" asp-controller="home">FAQ</a></li>
+                                        <li><a asp-action="index" asp-controller="contact">Contact us</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -473,12 +473,12 @@
                                 <h4 class="footer-title">Services</h4>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li><a href="order-tracking.html">Order tracking</a></li>
-                                        <li><a href="wishlist.html">Wish List</a></li>
-                                        <li><a href="login.html">Login</a></li>
-                                        <li><a href="account.html">My account</a></li>
-                                        <li><a href="about.html">Terms & Conditions</a></li>
-                                        <li><a href="about.html">Promotional Offers</a></li>
+                                        <li><a asp-action="index" asp-controller="home">Order tracking</a></li>
+                                        <li><a asp-action="index" asp-controller="home">Wish List</a></li>
+                                        <li><a asp-action="login" asp-controller="account">Login</a></li>
+                                        <li><a asp-action="profile" asp-controller="account">My account</a></li>
+                                        <li><a asp-action="index" asp-controller="about">Terms & Conditions</a></li>
+                                        <li><a asp-action="index" asp-controller="about">Promotional Offers</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -488,12 +488,12 @@
                                 <h4 class="footer-title">Customer Care</h4>
                                 <div class="footer-menu">
                                     <ul>
-                                        <li><a href="login.html">Login</a></li>
-                                        <li><a href="account.html">My account</a></li>
-                                        <li><a href="wishlist.html">Wish List</a></li>
-                                        <li><a href="order-tracking.html">Order tracking</a></li>
-                                        <li><a href="faq.html">FAQ</a></li>
-                                        <li><a href="contact.html">Contact us</a></li>
+                                        <li><a asp-action="login" asp-controller="account">Login</a></li>
+                                        <li><a asp-action="profile" asp-controller="acoount">My account</a></li>
+                                        <li><a asp-action="index" asp-controller="home">Wish List</a></li>
+                                        <li><a asp-action="index" asp-controller="home">Order tracking</a></li>
+                                        <li><a asp-action="index" asp-controller="home">FAQ</a></li>
+                                        <li><a asp-action="index" asp-controller="contact">Contact us</a></li>
                                     </ul>
                                 </div>
                             </div>

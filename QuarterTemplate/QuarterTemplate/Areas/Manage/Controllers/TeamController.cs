@@ -89,7 +89,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Team team = _context.Teams.FirstOrDefault(x => x.Id == id);
 
-            if (team == null) return NotFound();
+            if (team == null) return RedirectToAction("index", "error", new {area="" });
 
             return View(team);
         }
@@ -101,7 +101,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
             Team existTeam = _context.Teams.FirstOrDefault(x => x.Id == team.Id);
 
-            if (existTeam == null) return NotFound();
+            if (existTeam == null) return RedirectToAction("index", "error", new {area="" });
 
             string newFileName = null;
             if (team.ImageFile != null)

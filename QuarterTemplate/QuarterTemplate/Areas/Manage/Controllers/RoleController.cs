@@ -54,7 +54,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         public IActionResult Edit(string name)
         {
             IdentityRole role = _roleManager.Roles.FirstOrDefault(x => x.Name == name);
-            if (role == null) return NotFound();
+            if (role == null) return RedirectToAction("index", "error", new {area="" });
 
             TempData["name"] = name;
 
@@ -68,7 +68,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
             var name = TempData["name"];
             IdentityRole existRole = _roleManager.Roles.FirstOrDefault(x => x.Name == name.ToString());
 
-            if (existRole == null) return NotFound();
+            if (existRole == null) return RedirectToAction("index", "error", new {area="" });
 
             existRole.Name = identityRole.Name;
 

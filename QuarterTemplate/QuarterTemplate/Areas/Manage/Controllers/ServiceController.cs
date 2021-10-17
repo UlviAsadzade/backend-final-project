@@ -51,7 +51,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Service service = _context.Services.FirstOrDefault(x => x.Id == id);
 
-            if (service == null) return NotFound();
+            if (service == null) return RedirectToAction("index", "error", new {area="" });
 
             return View(service);
         }
@@ -61,7 +61,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Service existService = _context.Services.FirstOrDefault(x => x.Id == service.Id);
 
-            if (existService == null) return NotFound();
+            if (existService == null) return RedirectToAction("index", "error", new {area="" });
 
             existService.Title = service.Title;
             existService.Icon = service.Icon;

@@ -217,7 +217,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Product product = _context.Products.Include(x => x.ProductImages).Include(x => x.ProductAmenities).FirstOrDefault(x => x.Id == id);
 
-            if (product == null) return NotFound();
+            if (product == null) return RedirectToAction("index", "error", new {area="" });
 
             ViewBag.Teams = _context.Teams.ToList();
             ViewBag.Categories = _context.Categories.ToList();
@@ -246,7 +246,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
             Product existProduct = _context.Products.Include(x => x.ProductImages).Include(x => x.ProductAmenities).FirstOrDefault(x => x.Id == product.Id);
 
-            if (existProduct == null) return NotFound();
+            if (existProduct == null) return RedirectToAction("index", "error", new {area="" });
 
 
             existProduct.ProductAmenities.RemoveAll((x => !product.AmenityIds.Contains(x.AmenityId)));

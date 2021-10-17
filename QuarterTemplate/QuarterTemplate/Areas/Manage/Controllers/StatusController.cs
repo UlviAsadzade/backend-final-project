@@ -51,7 +51,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Status status = _context.Statuses.FirstOrDefault(x => x.Id == id);
 
-            if (status == null) return NotFound();
+            if (status == null) return RedirectToAction("index", "error", new {area="" });
 
             return View(status);
         }
@@ -61,7 +61,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Status existStatus = _context.Statuses.FirstOrDefault(x => x.Id == status.Id);
 
-            if (existStatus == null) return NotFound();
+            if (existStatus == null) return RedirectToAction("index", "error", new {area="" });
 
             existStatus.Name = status.Name;
 

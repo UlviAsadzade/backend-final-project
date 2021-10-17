@@ -51,7 +51,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             About about = _context.Abouts.FirstOrDefault(x => x.Id == id);
 
-            if (about == null) return NotFound();
+            if (about == null) return RedirectToAction("index", "error", new {area="" });
 
             return View(about);
         }
@@ -61,7 +61,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             About existAbout = _context.Abouts.FirstOrDefault(x => x.Id == about.Id);
 
-            if (existAbout == null) return NotFound();
+            if (existAbout == null) return RedirectToAction("index", "error", new {area="" });
 
             existAbout.Text = about.Text;
             existAbout.Icon = about.Icon;

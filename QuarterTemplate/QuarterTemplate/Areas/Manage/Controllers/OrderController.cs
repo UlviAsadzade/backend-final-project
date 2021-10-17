@@ -36,7 +36,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Order order = _context.Orders.FirstOrDefault(x => x.Id == id);
 
-            if (order == null) return NotFound();
+            if (order == null) return RedirectToAction("index", "error", new {area="" });
 
             return View(order);
         }
@@ -44,7 +44,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         public IActionResult Accept(int id)
         {
             Order order = _context.Orders.Include(x=>x.Product).Include(x => x.AppUser).FirstOrDefault(x => x.Id == id);
-            if (order == null) return NotFound();
+            if (order == null) return RedirectToAction("index", "error", new {area="" });
             
             order.Status = Models.Enums.OrderStatus.Accepted;
             order.Product.IsSold = true;
@@ -74,7 +74,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         public IActionResult Reject(int id)
         {
             Order order = _context.Orders.Include(x=>x.Product).FirstOrDefault(x => x.Id == id);
-            if (order == null) return NotFound();
+            if (order == null) return RedirectToAction("index", "error", new {area="" });
 
             order.Status = Models.Enums.OrderStatus.Rejected;
             order.Product.IsSold = false;

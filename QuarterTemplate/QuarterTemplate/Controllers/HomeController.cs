@@ -69,6 +69,7 @@ namespace QuarterTemplate.Controllers
         {
             Product product = _context.Products
                 .Include(x => x.ProductImages).Include(x => x.Category)
+                .Include(x=>x.Reviews)
                 .Include(x => x.ProductAmenities).ThenInclude(x => x.Amenity)
                 .FirstOrDefault(x => x.Id == id);
 
@@ -77,11 +78,7 @@ namespace QuarterTemplate.Controllers
 
         public IActionResult Search(string search)
         {
-            var query = _context.Products.Include(x => x.ProductImages).Include(x => x.City)
-                                            .Include(x => x.Team).Include(x => x.Status)
-                                            .Include(x => x.ProductAmenities)
-                                            .ThenInclude(x => x.Amenity).AsQueryable()
-                                            .Where(x => x.Name.Contains(search));
+            var query = _context.Products.AsQueryable().Where(x => x.Name.Contains(search));
 
             List<Product> products = query.OrderByDescending(x => x.Id).Take(3).ToList();
 

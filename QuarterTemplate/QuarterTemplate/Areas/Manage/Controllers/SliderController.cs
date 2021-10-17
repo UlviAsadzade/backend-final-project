@@ -89,7 +89,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Slider slider = _context.Sliders.FirstOrDefault(x => x.Id == id);
 
-            if (slider == null) return NotFound();
+            if (slider == null) return RedirectToAction("index", "error", new {area="" });
 
             return View(slider);
         }
@@ -101,7 +101,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
             Slider existSlider = _context.Sliders.FirstOrDefault(x => x.Id == slider.Id);
 
-            if (existSlider == null) return NotFound();
+            if (existSlider == null) return RedirectToAction("index", "error", new {area="" });
 
             string newFileName = null;
             if (slider.ImageFile != null)

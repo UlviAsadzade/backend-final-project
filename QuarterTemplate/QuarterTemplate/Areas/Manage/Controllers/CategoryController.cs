@@ -51,7 +51,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Category category = _context.Categories.FirstOrDefault(x => x.Id == id);
 
-            if (category == null) return NotFound();
+            if (category == null) return RedirectToAction("index", "error");
 
             return View(category);
         }
@@ -61,7 +61,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             Category existCategory = _context.Categories.FirstOrDefault(x => x.Id == category.Id);
 
-            if (existCategory == null) return NotFound();
+            if (existCategory == null) return RedirectToAction("index", "error");
 
             existCategory.Name = category.Name;
 

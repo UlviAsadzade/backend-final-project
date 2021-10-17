@@ -51,7 +51,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             City city = _context.Cities.FirstOrDefault(x => x.Id == id);
 
-            if (city == null) return NotFound();
+            if (city == null) return RedirectToAction("index", "error", new {area="" });
 
             return View(city);
         }
@@ -61,7 +61,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         {
             City existCity = _context.Cities.FirstOrDefault(x => x.Id == city.Id);
 
-            if (existCity == null) return NotFound();
+            if (existCity == null) return RedirectToAction("index", "error", new {area="" });
 
             existCity.Name = city.Name;
 

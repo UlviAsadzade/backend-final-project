@@ -35,7 +35,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         public IActionResult Accept(int id)
         {
             Review review = _context.Reviews.FirstOrDefault(x => x.Id == id);
-            if (review == null) return NotFound();
+            if (review == null) return RedirectToAction("index", "error", new {area="" });
 
             review.IsAccepted = true;
 
@@ -47,7 +47,7 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         public IActionResult Reject(int id)
         {
             Review review = _context.Reviews.FirstOrDefault(x => x.Id == id);
-            if (review == null) return NotFound();
+            if (review == null) return RedirectToAction("index", "error", new {area="" });
 
             review.IsAccepted = false;
 
