@@ -154,12 +154,16 @@
                                 </div>
                                 <div class="header-search-1-form">
                                     <form id="#" method="get" action="#">
-                                        <input type="text" name="search" value="" placeholder="Search here..." />
+                                        <input autocomplete="off" type="text" id="search" name="search" value="" style="margin-bottom:0" placeholder="Search here..." />
+                                        <ul class="list-group search-list">
+                                        </ul>
                                         <button type="submit">
                                             <span><i class="icon-search"></i></span>
                                         </button>
                                     </form>
+
                                 </div>
+
                             </div>
                             <!-- user-menu -->
                             <div class="ltn__drop-menu user-menu">
@@ -189,7 +193,7 @@
                             <div class="mini-cart-icon">
                                 <a href="#ltn__utilize-cart-menu" class="ltn__utilize-toggle">
                                     <i class="flaticon-heart-1"></i>
-                                    <sup >@wishlistItems.Count()</sup>
+                                    <sup>@wishlistItems.Count()</sup>
                                 </a>
                             </div>
 

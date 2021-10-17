@@ -32,7 +32,7 @@ namespace QuarterTemplate.Controllers
                 Cities=_context.Cities.ToList(),
                 Categories=_context.Categories.ToList(),
                 Statuses=_context.Statuses.ToList(),
-                LastSellProduct = _context.Orders.Include(x=>x.Product).ThenInclude(y=>y.ProductImages).Take(3).OrderByDescending(x=>x.Id).FirstOrDefault().Product,
+                LastAddedProduct = _context.Products.Include(y=>y.ProductImages).Take(3).OrderByDescending(x=>x.Id).FirstOrDefault(),
                 FeaturedProducts = _context.Products.Include(x => x.ProductImages).
                  Include(x => x.Status).Include(x => x.City).Include(x => x.Team).
                  Where(x => x.IsFeatured).ToList(),
@@ -73,6 +73,19 @@ namespace QuarterTemplate.Controllers
                 .FirstOrDefault(x => x.Id == id);
 
             return PartialView("_ProductModalPartial", product);
+        }
+
+        public IActionResult Search(string search)
+        {
+            var query = _context.Products.Include(x => x.ProductImages).Include(x => x.City)
+                                            .Include(x => x.Team).Include(x => x.Status)
+                                            .Include(x => x.ProductAmenities)
+                                            .ThenInclude(x => x.Amenity).AsQueryable()
+                                            .Where(x => x.Name.Contains(search));
+
+            List<Product> products = query.OrderByDescending(x => x.Id).Take(3).ToList();
+
+            return PartialView("_SearchPartial", products);
         }
 
 

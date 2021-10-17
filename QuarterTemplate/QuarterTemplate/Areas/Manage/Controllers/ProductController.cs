@@ -61,7 +61,11 @@ namespace QuarterTemplate.Areas.Manage.Controllers
         [HttpPost]
         public IActionResult Create(Product product)
         {
-
+            ViewBag.Teams = _context.Teams.ToList();
+            ViewBag.Categories = _context.Categories.ToList();
+            ViewBag.Cities = _context.Cities.ToList();
+            ViewBag.Amenities = _context.Amenities.ToList();
+            ViewBag.Statuses = _context.Statuses.ToList();
 
             if (!_context.Teams.Any(x => x.Id == product.TeamId)) ModelState.AddModelError("TeamId", "Team not found!");
             if (!_context.Categories.Any(x => x.Id == product.CategoryId)) ModelState.AddModelError("CategoryId", "Category not found!");
@@ -145,6 +149,61 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
                     product.ProductImages.Add(image);
                 }
+            }
+
+
+            if (product.Rooms < 0)
+            {
+                ModelState.AddModelError("Rooms", "Rooms Count can not be less than 0");
+                return View();
+            }
+
+            if (product.Bedrooms < 0)
+            {
+                ModelState.AddModelError("Bedrooms", "Bedrooms count can not be less than 0");
+                return View();
+            }
+
+            if (product.Bathrooms < 0)
+            {
+                ModelState.AddModelError("Bathrooms", "Bathrooms count can not be less than 0");
+                return View();
+            }
+
+            if (product.Rate < 0)
+            {
+                ModelState.AddModelError("Rate", "Rate count can not be less than 0");
+                return View();
+            }
+
+            if (product.CostPrice < 0)
+            {
+                ModelState.AddModelError("CostPrice", "CostPrice count can not be less than 0");
+                return View();
+            }
+
+            if (product.SalePrice < 0)
+            {
+                ModelState.AddModelError("SalePrice", "SalePrice count can not be less than 0");
+                return View();
+            }
+
+            if (product.HomeArea < 0)
+            {
+                ModelState.AddModelError("HomeArea", "HomeArea count can not be less than 0");
+                return View();
+            }
+
+            if (product.HouseFloor < 0)
+            {
+                ModelState.AddModelError("HouseFloor", "HouseFloor count can not be less than 0");
+                return View();
+            }
+
+            if (product.WhichFloor < 0)
+            {
+                ModelState.AddModelError("WhichFloor", "WhichFloor count can not be less than 0");
+                return View();
             }
 
             _context.Products.Add(product);
@@ -277,6 +336,59 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
                     existProduct.ProductImages.Add(image);
                 }
+            }
+
+            if (product.Rooms < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+            }
+
+            if (product.Bedrooms < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+
+            }
+
+            if (product.Bathrooms < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+
+            }
+
+            if (product.Rate < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+
+            }
+
+            if (product.CostPrice < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+
+            }
+
+            if (product.SalePrice < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+
+            }
+
+            if (product.HomeArea < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+
+            }
+
+            if (product.HouseFloor < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+
+            }
+
+            if (product.WhichFloor < 0)
+            {
+                return RedirectToAction("index","error", new { area=""});
+
             }
 
             existProduct.Name = product.Name;

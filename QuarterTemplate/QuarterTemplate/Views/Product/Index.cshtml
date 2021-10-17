@@ -30,35 +30,6 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-8 order-lg-2 mb-100">
-                        <div class="ltn__shop-options">
-                            <ul class="justify-content-start">
-                                <li>
-                                    <div class="ltn__grid-list-tab-menu ">
-                                        <div class="nav">
-                                            <a class="active show" data-bs-toggle="tab" href="#liton_product_grid"><i class="fas fa-th-large"></i></a>
-                                            <a data-bs-toggle="tab" href="#liton_product_list"><i class="fas fa-list"></i></a>
-                                        </div>
-                                    </div>
-                                </li>
-                                <li class="d-none">
-                                    <div class="showing-product-number text-right">
-                                        <span>Showing 1–12 of 18 results</span>
-                                    </div>
-                                </li>
-                                <li>
-                                    <div class="short-by text-center">
-                                        <select class="nice-select">
-                                            <option>Default Sorting</option>
-                                            <option>Sort by popularity</option>
-                                            <option>Sort by new arrivals</option>
-                                            <option>Sort by price: low to high</option>
-                                            <option>Sort by price: high to low</option>
-                                        </select>
-                                    </div>
-                                </li>
-                              
-                            </ul>
-                        </div>
                         <div class="tab-content">
                             <div class="tab-pane fade active show" id="liton_product_grid">
                                 <div class="ltn__product-tab-content-inner ltn__product-grid-view">
@@ -77,7 +48,7 @@
                                         {
                                             <div class="col-xl-6 col-sm-6 col-12">
                                                 <div class="ltn__product-item ltn__product-item-4 ltn__product-item-5 text-center---">
-                                                    <div class="product-img">
+                                                    <div class="product-img" style="min-height:275px">
                                                         <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id"><img src="~/uploads/product/@item.ProductImages.FirstOrDefault(x=>x.IsPoster==true)?.Image" alt="#"></a>
                                                         <div class="real-estate-agent">
                                                             <div class="agent-img">
@@ -91,7 +62,7 @@
                                                                 <li class="sale-badg">For @item.Status.Name</li>
                                                             </ul>
                                                         </div>
-                                                        <h2 class="product-title"><a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">@item.Name</a></h2>
+                                                        <h2 class="product-title" style="min-height:55px"><a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">@item.Name</a></h2>
                                                         <div class="product-img-location">
                                                             <ul>
                                                                 <li>

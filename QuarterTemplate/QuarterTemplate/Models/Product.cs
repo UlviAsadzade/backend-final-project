@@ -56,6 +56,8 @@ namespace QuarterTemplate.Models
 
         public int ParkingCount { get; set; }
 
+        public bool IsSold { get; set; }
+
 
         public Category Category { get; set; }
         public Team Team { get; set; }

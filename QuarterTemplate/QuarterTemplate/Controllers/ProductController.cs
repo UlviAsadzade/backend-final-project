@@ -28,7 +28,7 @@ namespace QuarterTemplate.Controllers
 
         public IActionResult Index(int? minPrice,int? maxPrice, int page = 1, int? categoryId = null, int? amenityId = null, int? statusId = null, int? cityId = null, string search = null)
         {
-            var query = _context.Products.Include(x=>x.Team).AsQueryable();
+            var query = _context.Products.Where(x=>x.IsSold==false).Include(x=>x.Team).AsQueryable();
             if (minPrice!=null) query = query.Where(x => x.SalePrice > minPrice);
             if (maxPrice != null) query = query.Where(x => x.SalePrice < maxPrice);
 
@@ -82,7 +82,7 @@ namespace QuarterTemplate.Controllers
             ViewBag.Settings = _context.Settings.FirstOrDefault();
             ViewBag.SocialMedias = _context.Settings.ToList();
             ViewBag.Categories = _context.Categories.Include(x => x.Products).ToList();
-            ViewBag.SameProducts = _context.Products.Include(x => x.ProductImages).Include(x=>x.Team)
+            ViewBag.SameProducts = _context.Products.Where(x=>x.IsSold==false).Include(x => x.ProductImages).Include(x=>x.Team)
                 .Include(x => x.City).Include(x => x.Status).ToList();
 
             ReviewViewModel reviewVm = new ReviewViewModel
@@ -285,6 +285,7 @@ namespace QuarterTemplate.Controllers
 
             };
 
+            
             _context.Orders.Add(order);
             _context.SaveChanges();
 

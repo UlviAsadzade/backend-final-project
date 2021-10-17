@@ -5082,7 +5082,9 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     visibility: hidden; }
 
 .search-open.header-search-1-form {
-  height: 90px; }
+  height: max-content;
+  padding-bottom:20px;
+}
 
 .search-open .for-search-show {
   opacity: 0;

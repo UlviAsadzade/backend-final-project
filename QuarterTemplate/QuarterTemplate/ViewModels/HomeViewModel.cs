@@ -17,7 +17,7 @@ namespace QuarterTemplate.ViewModels
         public List<City> Cities { get; set; }
         public List<Category> Categories { get; set; }
         public List<Product> FeaturedProducts { get; set; }
-        public Product LastSellProduct { get; set; }
+        public Product LastAddedProduct { get; set; }
         public List<Review> Reviews { get; set; }
 
 

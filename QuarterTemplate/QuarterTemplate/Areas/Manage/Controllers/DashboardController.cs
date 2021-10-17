@@ -25,13 +25,14 @@ namespace QuarterTemplate.Areas.Manage.Controllers
 
         public IActionResult Index()
         {
-            double acceptedProductCount = _context.Orders.Where(x => x.Status == Models.Enums.OrderStatus.Accepted).Count();
-            double totalProductCount = _context.Orders.Count();
+            double soldProductCount = _context.Products.Where(x=>x.IsSold==true).Count();
+
+            double totalProductCount = _context.Products.Count();
 
             DashboardViewModel dashboardVM = new DashboardViewModel
             {
                 Orders = _context.Orders.ToList(),
-                SoldProductPercent= Math.Ceiling(acceptedProductCount / totalProductCount * 100)
+                SoldProductPercent= Math.Ceiling(soldProductCount / totalProductCount * 100)
             };
 
             return View(dashboardVM);

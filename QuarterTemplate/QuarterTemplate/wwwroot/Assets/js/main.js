@@ -2051,7 +2051,16 @@ $(document).ready(function () {
         })
     })
    
-
+    $('#search').keyup(function () {
+        let search = $(this).val();
+        $.ajax({
+            url: 'https://localhost:44313/home/search?search=' + search,
+            method: 'get',
+            success: function (resp) {
+                $('.search-list').html(resp);
+            }
+        })
+    })
   
 
 

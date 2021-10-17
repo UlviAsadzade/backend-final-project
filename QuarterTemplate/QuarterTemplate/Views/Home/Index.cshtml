@@ -40,43 +40,43 @@
                             </div>
                         </div>
                     </div>
-                    </div>
+                </div>
 
-                    }
-                    else
-                    {
-                    <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3">
-                        <div class="ltn__slide-item-inner  text-right text-end">
-                            <div class="container">
-                                <div class="row">
-                                    <div class="col-lg-12 align-self-center">
-                                        <div class="slide-item-info">
-                                            <div class="slide-item-info-inner ltn__slide-animation">
-                                                <h6 class="slide-sub-title white-color--- animated"><span><i class="@item.Icon"></i></span> @item.Subtitle</h6>
-                                                <h1 class="slide-title animated ">@item.Title1 <br>@item.Title2</h1>
-                                                <div class="slide-brief animated">
-                                                    <p>@item.Desc</p>
-                                                </div>
-                                                <div class="btn-wrapper animated">
-                                                    <a asp-action="index" asp-controller="about" class="theme-btn-1 btn btn-effect-1">@item.UrlText</a>
-                                                </div>
+            }
+            else
+            {
+                <div class="ltn__slide-item ltn__slide-item-2 ltn__slide-item-3-normal ltn__slide-item-3">
+                    <div class="ltn__slide-item-inner  text-right text-end">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-12 align-self-center">
+                                    <div class="slide-item-info">
+                                        <div class="slide-item-info-inner ltn__slide-animation">
+                                            <h6 class="slide-sub-title white-color--- animated"><span><i class="@item.Icon"></i></span> @item.Subtitle</h6>
+                                            <h1 class="slide-title animated ">@item.Title1 <br>@item.Title2</h1>
+                                            <div class="slide-brief animated">
+                                                <p>@item.Desc</p>
+                                            </div>
+                                            <div class="btn-wrapper animated">
+                                                <a asp-action="index" asp-controller="about" class="theme-btn-1 btn btn-effect-1">@item.UrlText</a>
                                             </div>
                                         </div>
-                                        <div class="slide-item-img slide-img-left">
-                                            <img src="~/assets/img/slider/@item.Image" alt="#">
-                                        </div>
+                                    </div>
+                                    <div class="slide-item-img slide-img-left">
+                                        <img src="~/assets/img/slider/@item.Image" alt="#">
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-
-
-                    }
-                    }
-                    <!-- ltn__slide-item -->
                 </div>
-            </div>
+
+
+            }
+        }
+        <!-- ltn__slide-item -->
+    </div>
+</div>
 <!-- SLIDER AREA END -->
 <!-- CAR DEALER FORM AREA START -->
 <div class="ltn__car-dealer-form-area mt--65 mt-120 pb-115---">
@@ -114,7 +114,7 @@
                                     </div>
                                     <div class="ltn__car-dealer-form-item ltn__custom-icon ltn__icon-calendar col-lg-3 col-md-6">
                                         <div class="btn-wrapper text-center mt-0">
-                                             <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button> 
+                                            <button type="submit" class="btn theme-btn-1 btn-effect-1 text-uppercase">Search Inventory</button>
                                             @*<a href="shop-right-sidebar.html" class="btn theme-btn-1 btn-effect-1 text-uppercase">Find Now</a>*@
                                         </div>
                                     </div>
@@ -266,58 +266,62 @@
 </div>
 <!-- COUNTER UP AREA END -->
 <!-- ABOUT US AREA START -->
-<div class="ltn__about-us-area pt-120 pb-90 ">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-6 align-self-center">
-                <div class="about-us-info-wrap">
-                    <div class="section-title-area ltn__section-title-2--- mb-30">
-                        <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">About Us</h6>
-                        <h1 class="section-title">Today Sells Properties</h1>
-                        <p>
-                            @Model.LastSellProduct.Desc
-                        </p>
-                    </div>
-                   
-                    <ul class="ltn__list-item-2 ltn__list-item-2-before ltn__flat-info">
-                        <li>
-                            <span>@Model.LastSellProduct.Bedrooms <i class="flaticon-bed"></i></span>
-                            Bedrooms
-                        </li>
-                        <li>
-                            <span>@Model.LastSellProduct.Bathrooms <i class="flaticon-clean"></i></span>
-                            Bathrooms
-                        </li>
-                        <li>
-                            <span>@Model.LastSellProduct.ParkingCount <i class="flaticon-car"></i></span>
-                            Car parking
-                        </li>
-                        <li>
-                            <span>@Model.LastSellProduct.HomeArea <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span>
-                            square Ft
-                        </li>
-                    </ul>
-                    <ul class="ltn__list-item-2 ltn__list-item-2-before--- ltn__list-item-2-img mb-50">
-                        @foreach (var item in Model.LastSellProduct.ProductImages.Where(x=>x.IsPoster==false).Take(3))
-                        {
-                            <li>
-                                <a href="~/uploads/product/@item.Image" data-rel="lightcase:myCollection">
-                                    <img src="~/uploads/product/@item.Image" alt="Image">
-                                </a>
-                            </li>
-                        }
+@if (Model.LastAddedProduct != null)
+{
+    <div class="ltn__about-us-area pt-120 pb-90 ">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 align-self-center">
+                    <div class="about-us-info-wrap">
+                        <div class="section-title-area ltn__section-title-2--- mb-30">
+                            <h6 class="section-subtitle section-subtitle-2 ltn__secondary-color">About Us</h6>
+                            <h1 class="section-title">Last Added Properties</h1>
+                            <p>
+                                @Model.LastAddedProduct.Desc
+                            </p>
+                        </div>
 
-                    </ul>
+                        <ul class="ltn__list-item-2 ltn__list-item-2-before ltn__flat-info">
+                            <li>
+                                <span>@Model.LastAddedProduct.Bedrooms <i class="flaticon-bed"></i></span>
+                                Bedrooms
+                            </li>
+                            <li>
+                                <span>@Model.LastAddedProduct.Bathrooms <i class="flaticon-clean"></i></span>
+                                Bathrooms
+                            </li>
+                            <li>
+                                <span>@Model.LastAddedProduct.ParkingCount <i class="flaticon-car"></i></span>
+                                Car parking
+                            </li>
+                            <li>
+                                <span>@Model.LastAddedProduct.HomeArea <i class="flaticon-square-shape-design-interface-tool-symbol"></i></span>
+                                square Ft
+                            </li>
+                        </ul>
+                        <ul class="ltn__list-item-2 ltn__list-item-2-before--- ltn__list-item-2-img mb-50">
+                            @foreach (var item in Model.LastAddedProduct.ProductImages.Where(x => x.IsPoster == false).Take(3))
+                            {
+                                <li>
+                                    <a href="~/uploads/product/@item.Image" data-rel="lightcase:myCollection">
+                                        <img src="~/uploads/product/@item.Image" alt="Image">
+                                    </a>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
                 </div>
-            </div>
-            <div class="col-lg-6 align-self-center">
-                <div class="about-us-img-wrap about-img-right">
-                    <img src="~/uploads/product/@Model.LastSellProduct.ProductImages.FirstOrDefault(x=>x.IsPoster==true)?.Image" alt="About Us Image">
+                <div class="col-lg-6 align-self-center">
+                    <div class="about-us-img-wrap about-img-right">
+                        <img src="~/uploads/product/@Model.LastAddedProduct.ProductImages.FirstOrDefault(x=>x.IsPoster==true)?.Image" alt="About Us Image">
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+}
 <!-- ABOUT US AREA END -->
 <!-- FEATURE AREA START ( Feature - 6) -->
 <div class="ltn__feature-area section-bg-1 pt-120 pb-90 mb-120---">
@@ -388,7 +392,7 @@
                                         <li>
                                             <a asp-controller="product" asp-action="detail" asp-route-id="@item.Id"><i class="fas fa-camera"></i> @item.ProductImages.Count()</a>
                                         </li>
-                                        
+
                                     </ul>
                                 </div>
                             </div>
@@ -403,7 +407,7 @@
                                     }
                                 </span>
                             </div>
-                            <h2 class="product-title"  style="min-height:70px"><a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">@item.Name</a></h2>
+                            <h2 class="product-title" style="min-height:70px"><a asp-controller="product" asp-action="detail" asp-route-id="@item.Id">@item.Name</a></h2>
                             <div class="product-description" style="min-height:150px">
                                 <p>
                                     @item.Desc
@@ -463,7 +467,6 @@
     </div>
 </div>
 <!-- PRODUCT SLIDER AREA END -->
-
 <!-- VIDEO AREA START -->
 <div class="ltn__video-popup-area ltn__video-popup-margin---">
     <div class="ltn__video-bg-img ltn__video-popup-height-600--- bg-overlay-black-30 bg-image bg-fixed ltn__animation-pulse1" data-bs-bg="../uploads/setting/@Model.Settings.VideoImage">
@@ -473,7 +476,6 @@
     </div>
 </div>
 <!-- VIDEO AREA END -->
-
 <!-- CATEGORY AREA START -->
 <div class="ltn__category-area ltn__product-gutter section-bg-1--- pt-115 pb-90 ">
     <div class="container">
@@ -524,7 +526,7 @@
                             <div class="ltn__testimoni-info">
                                 <p style="min-height:100px">
                                     <i class="flaticon-left-quote-1"></i>
-                                   @item.Text
+                                    @item.Text
                                 </p>
                                 <div class="ltn__testimoni-info-inner">
                                     <div class="ltn__testimoni-img">
@@ -585,5 +587,3 @@
     </div>
 </div>
 <!-- BRAND LOGO AREA END -->
-
-
